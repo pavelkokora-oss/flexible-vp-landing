@@ -392,7 +392,7 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .bg-canvas .rep-item{background:var(--card);box-shadow:var(--shadow-e2)}
 .rep-item p{color:var(--muted-foreground)}
 .rep-media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
-.rep-media img{aspect-ratio:18/25;object-fit:cover;object-position:top}
+.rep-media img{aspect-ratio:600/872;object-fit:cover;object-position:top;width:100%}
 
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
@@ -766,8 +766,8 @@ def landing(lang):
 </div>
 </div>
 <div class="rep-media">
-<figure class="fig"><img src="{prefix}assets/media/whatsapp_chat.jpg" alt="{t("cap_wa")}" width="600" height="833" loading="lazy"><figcaption>{t("cap_wa")}</figcaption></figure>
-<figure class="fig"><a class="zoom" href="{prefix}assets/media/pdf_cycle_report.jpg" target="_blank" rel="noopener" aria-label="{t("cap_pdf")} — {t("open_full")}"><img src="{prefix}assets/media/pdf_cycle_report.jpg" alt="{t("cap_pdf")}" width="777" height="1100" loading="lazy"></a><figcaption>{t("cap_pdf")}</figcaption></figure>
+<figure class="fig"><img src="{prefix}assets/media/whatsapp_chat.jpg" alt="{t("cap_wa")}" width="600" height="872" loading="lazy"><figcaption>{t("cap_wa")}</figcaption></figure>
+<figure class="fig"><a class="zoom" href="{prefix}assets/media/pdf_cycle_report.jpg" target="_blank" rel="noopener" aria-label="{t("cap_pdf")} — {t("open_full")}"><img src="{prefix}assets/media/pdf_cycle_report.jpg" alt="{t("cap_pdf")}" width="800" height="1162" loading="lazy"></a><figcaption>{t("cap_pdf")}</figcaption></figure>
 </div>
 </div></section>
 """)
