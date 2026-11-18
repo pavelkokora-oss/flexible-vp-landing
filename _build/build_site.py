@@ -89,7 +89,7 @@ T = {
     "r1d": ("A short message: what your child did and what's next.", "Pesan singkat: apa yang sudah dikerjakan anak dan apa selanjutnya."),
     "r2t": ("Every 3 weeks · PDF", "Setiap 3 minggu · PDF"),
     "r2d": ("A cycle report with the project and the tutor's comment.", "Laporan siklus berisi proyek dan komentar tutor."),
-    "cap_wa": ("Weekly message and PDF report in WhatsApp", "Pesan mingguan dan laporan PDF di WhatsApp"),
+    "cap_wa": ("Weekly message in WhatsApp", "Pesan mingguan di WhatsApp"),
     "cap_pdf": ("Example cycle report", "Contoh laporan siklus"),
     "open_full": ("Open full size", "Buka ukuran penuh"),
     # how it works
@@ -388,6 +388,7 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .bg-canvas .rep-item{background:var(--card);box-shadow:var(--shadow-e2)}
 .rep-item p{color:var(--muted-foreground)}
 .rep-media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.rep-media img{aspect-ratio:18/25;object-fit:cover;object-position:top}
 
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
@@ -444,7 +445,9 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* kevin */
-.kev{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:48px;align-items:center}
+.kev{display:flex;flex-direction:column;align-items:center;gap:32px;text-align:center}
+.kev h2{max-width:720px}
+.kev-video{width:100%;max-width:960px;border-radius:var(--radius-xl);box-shadow:var(--shadow-e3);background:var(--hero)}
 
 /* course + cta */
 .box{border-radius:var(--radius-xl);padding:48px;display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between}
@@ -496,7 +499,7 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
   .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
   .parts{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hero-grid,.rep,.kev,.dc{grid-template-columns:minmax(0,1fr);gap:40px}
+  .hero-grid,.rep,.dc{grid-template-columns:minmax(0,1fr);gap:40px}
   .hero-grid .stat{max-width:480px}
 }
 @media (max-width:767px){
@@ -649,11 +652,10 @@ def landing(lang):
 <main>
 """)
 
-    # KEVIN (second screen)
-    note = f'<p class="small muted">{t("k_note")}</p>' if t("k_note") else ""
+    # KEVIN (second screen): one heading, big centered video
     out.append(f"""<section id="kevin" class="sec"><div class="wrap kev">
-<div class="head"><h2>{t("k_h2")}</h2><p class="lead">{t("k_d")}</p>{note}</div>
-<figure class="fig"><video controls playsinline preload="none" width="1280" height="720" poster="{prefix}assets/media/kevin_welcome.jpg"><source src="{prefix}assets/media/kevin_welcome.mp4" type="video/mp4"></video><figcaption>{t("cap_kevin")}</figcaption></figure>
+<h2>{t("k_h2")}</h2>
+<video class="kev-video" controls playsinline preload="none" width="1280" height="720" poster="{prefix}assets/media/kevin_welcome.jpg" aria-label="{t("cap_kevin")}"><source src="{prefix}assets/media/kevin_welcome.mp4" type="video/mp4"></video>
 </div></section>
 """)
 
@@ -736,7 +738,7 @@ def landing(lang):
 </div>
 </div>
 <div class="rep-media">
-<figure class="fig">{loop(prefix, "whatsapp_weekly_and_pdf", t("cap_wa"), 480, 984)}<figcaption>{t("cap_wa")}</figcaption></figure>
+<figure class="fig"><img src="{prefix}assets/media/whatsapp_chat.jpg" alt="{t("cap_wa")}" width="600" height="833" loading="lazy"><figcaption>{t("cap_wa")}</figcaption></figure>
 <figure class="fig"><a class="zoom" href="{prefix}assets/media/pdf_cycle_report.jpg" target="_blank" rel="noopener" aria-label="{t("cap_pdf")} — {t("open_full")}"><img src="{prefix}assets/media/pdf_cycle_report.jpg" alt="{t("cap_pdf")}" width="777" height="1100" loading="lazy"></a><figcaption>{t("cap_pdf")}</figcaption></figure>
 </div>
 </div></section>
