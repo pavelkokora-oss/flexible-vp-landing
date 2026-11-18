@@ -627,6 +627,7 @@ def landing(lang):
 {nav(lang, t, prefix, "../" if lang == "en" else "./", "en/" if lang == "id" else "./", "./")}
 <div class="hero-grid">
 <div class="hero-copy">
+<span class="eyebrow">{t("h_eyebrow")}</span>
 <h1>{t("h1a")}<br><span class="mark">{t("h1b")}</span></h1>
 <p class="lead">{t("h_lead")}</p>
 <div class="btns"><a class="btn btn-primary" href="#buy">{t("cta_buy")}</a><a class="btn btn-light" href="#included">{t("cta_more")}{I["arrow"](20)}</a></div>
@@ -793,6 +794,7 @@ def meetings(lang):
 {nav(lang, t, prefix, id_href, en_href, landing_href)}
 <a class="back" href="{landing_href}">{I["back"](20)}{t("m_back")}</a>
 <div class="hero-copy">
+<span class="eyebrow">{t("m_eyebrow")}</span>
 <h1>{t("m_h1a")} <span class="hl">{t("m_h1b")}</span></h1>
 <p class="lead">{t("m_lead")}</p>
 <ul class="facts"><li>{t("m_f1")}</li><li>{t("m_f2")}</li><li>{t("m_f3")}</li><li>{t("m_f4")}</li></ul>
