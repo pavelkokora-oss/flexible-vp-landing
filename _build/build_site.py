@@ -25,7 +25,7 @@ T = {
     "langlabel": ("Language", "Bahasa"),
     # hero
     "h_eyebrow": ("Visual Programming · New flexible format", "Pemrograman Visual · Format fleksibel baru"),
-    "h1a": ("The same coding course.", "Kursus coding yang sama."),
+    "h1a": ("The same visual programming course.", "Kursus pemrograman visual yang sama."),
     "h1b": ("3× cheaper.", "3× lebih murah."),
     "h_lead": ("Your child learns at home with <strong>weekly short lessons</strong> (video, quiz, simulator and tasks). Every 3 weeks, a <strong>live meeting</strong> with a tutor in a group of 4 kids. Same 36 topics, same certificate.",
                "Anak belajar di rumah dengan <strong>pelajaran singkat setiap minggu</strong> (video, kuis, simulator, dan tugas). Setiap 3 minggu ada <strong>pertemuan live</strong> bersama tutor dalam grup berisi 4 anak. 36 topik yang sama, sertifikat yang sama."),
@@ -666,7 +666,6 @@ def landing(lang):
 {nav(lang, t, prefix, "../" if lang == "en" else "./", "en/" if lang == "id" else "./", "./")}
 <div class="hero-grid">
 <div class="hero-copy">
-<span class="eyebrow">{t("h_eyebrow")}</span>
 <h1>{t("h1a")}<br><span class="mark">{t("h1b")}</span></h1>
 <p class="lead">{t("h_lead")}</p>
 <div class="btns"><a class="btn btn-primary" href="#buy">{t("cta_buy")}</a><a class="btn btn-light" href="#included">{t("cta_more")}{I["arrow"](20)}</a></div>
