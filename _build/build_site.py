@@ -51,8 +51,8 @@ T = {
     "c3d": ("Interactive puzzles where your child tries an idea before coding it. The regular course doesn't have them.",
             "Teka-teki interaktif tempat anak mencoba ide sebelum menuliskannya dalam kode. Kursus reguler tidak memilikinya."),
     "c4t": ("Chat support every day", "Bantuan chat setiap hari"),
-    "c4d": ("In Discord, 15:00–20:00 WIB. A moderator answers first, tutors help with harder questions.",
-            "Di Discord, pukul 15:00–20:00 WIB. Moderator menjawab lebih dulu, tutor membantu pertanyaan yang lebih sulit."),
+    "c4d": ("In Discord, 12:00–20:00 WIB. A moderator answers first, tutors help with harder questions.",
+            "Di Discord, pukul 12:00–20:00 WIB. Moderator menjawab lebih dulu, tutor membantu pertanyaan yang lebih sulit."),
     "c5t": ("Reports for parents", "Laporan untuk orang tua"),
     "c5d": ("A short WhatsApp message every week and a PDF report after every 3 weeks.",
             "Pesan WhatsApp singkat setiap minggu dan laporan PDF setiap 3 minggu."),
@@ -79,8 +79,8 @@ T = {
     "sim2": ("Write a program: lead the Mars bot to the flag", "Susun program: antar Bot Mars sampai ke bendera"),
     "sim3": ("Split a long path into checkpoints", "Bagi jalur panjang menjadi checkpoint"),
     "dc_h3": ("Questions go to Discord", "Pertanyaan diajukan di Discord"),
-    "dc_d": ("A moderator answers first, 15:00–20:00 WIB. When a task is tricky, a tutor joins and explains.",
-             "Moderator menjawab lebih dulu, pukul 15:00–20:00 WIB. Kalau tugasnya sulit, tutor ikut membantu dan menjelaskan."),
+    "dc_d": ("A moderator answers first, 12:00–20:00 WIB. When a task is tricky, a tutor joins and explains.",
+             "Moderator menjawab lebih dulu, pukul 12:00–20:00 WIB. Kalau tugasnya sulit, tutor ikut membantu dan menjelaskan."),
     "cap_dc": ("Example chat in Discord", "Contoh obrolan di Discord"),
     # reports
     "r_eyebrow": ("Reports for parents", "Laporan untuk orang tua"),
@@ -157,6 +157,10 @@ T = {
     "cta_d": ("Message us on WhatsApp — the message <strong>“I’m interested. I want to buy Flexible format.”</strong> is ready to send, and we’ll get your child started.",
               "Hubungi kami di WhatsApp — pesan <strong>“Saya tertarik. Saya ingin membeli format Fleksibel.”</strong> sudah siap dikirim, dan kami akan membantu anak Anda mulai belajar."),
     "cta_btn": ("Message us on WhatsApp", "Hubungi kami di WhatsApp"),
+    "f_contact": ("Contact", "Kontak"),
+    "f_email": ("Email", "Email"),
+    "f_rights": ("All rights reserved 2026", "Hak cipta dilindungi undang-undang 2026"),
+    "f_main": ("https://algonova.com/ind/en", "https://algonova.com/ind/id"),
     "foot": ("International online IT school for kids and teens, 5–17", "Sekolah IT online internasional untuk anak dan remaja usia 5–17 tahun"),
     # meetings page
     "m_title": ("12 live meetings — Visual Programming Flexible Format | Algonova", "12 pertemuan live — Pemrograman Visual Format Fleksibel | Algonova"),
@@ -198,7 +202,7 @@ CMP = [
      (("New: interactive puzzles in every lesson", "In every lesson"), ("Baru: teka-teki interaktif di setiap pelajaran", "Di setiap pelajaran")), "plus"),
     ((("Support between lessons", "Daily support"), ("Bantuan di antara kelas", "Bantuan harian")),
      (("No daily support", "No daily chat"), ("Tidak ada bantuan harian", "Tidak ada chat harian")),
-     (("Discord chat every day, 15:00–20:00 WIB", "Daily, 15:00–20:00"), ("Chat Discord setiap hari, 15:00–20:00 WIB", "Setiap hari, 15:00–20:00")), "plus"),
+     (("Discord chat every day, 12:00–20:00 WIB", "Daily, 12:00–20:00"), ("Chat Discord setiap hari, 12:00–20:00 WIB", "Setiap hari, 12:00–20:00")), "plus"),
     ((("Report to parent", "Reports"), ("Laporan untuk orang tua", "Laporan")),
      (("Once a month", "Monthly"), ("Sebulan sekali", "Bulanan")),
      (("Every week + a PDF report every 3 weeks", "Weekly + PDF"), ("Setiap minggu + laporan PDF setiap 3 minggu", "Mingguan + PDF")), "plus"),
@@ -457,9 +461,15 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .box.violet p{color:var(--on-primary-muted)}
 .box.violet strong{color:var(--primary-foreground)}
 .foot{background:var(--hero);color:var(--on-dark-muted);padding:48px 0}
-.foot .wrap{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
-.foot img{height:32px;width:auto}
-.foot a{color:var(--violet);font-weight:600}
+.foot img{height:32px;width:auto;align-self:flex-start}
+.foot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;align-items:start}
+.foot-h{color:var(--on-dark-muted)}
+.foot a{color:var(--on-dark);text-decoration:none;align-self:flex-start;min-height:28px}
+.foot a:hover{text-decoration:underline;text-underline-offset:4px}
+.foot a.main{color:var(--violet);font-weight:600}
+.socials{display:flex;gap:8px}
+.foot .socials a{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--radius-md);background:var(--on-dark-fill);color:var(--on-dark)}
+.foot .socials a:hover{background:var(--on-dark-hover);text-decoration:none}
 
 /* meetings page */
 .back{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--on-dark-muted);text-decoration:none;font-weight:600;margin-top:40px}
@@ -538,6 +548,7 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
   .cmp td.reg{width:31%}
   .cmp td.flex .ok{margin-right:2px}
   .cmp td.price{font-size:16px}
+  .foot-grid{grid-template-columns:minmax(0,1fr);gap:32px}
   .mod{grid-template-columns:minmax(0,1fr);gap:12px}
   .mcards{grid-template-columns:minmax(0,1fr)}
   .bar{flex-direction:column}
@@ -609,11 +620,29 @@ def loop(prefix, name, label, w, h):
             f'<source src="{prefix}assets/media/{name}.mp4" type="video/mp4"></video>')
 
 
+SOCIAL = [
+    ("Instagram", "https://instagram.com/algonova_indonesia",
+     '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>'),
+    ("Facebook", "https://www.facebook.com/share/1DEM9hGyvC/",
+     '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>'),
+    ("YouTube", "https://youtube.com/@algonova_indonesia",
+     '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>'),
+    ("LinkedIn", "https://www.linkedin.com/company/algonova-global",
+     '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>'),
+]
+
+
 def footer(t, prefix):
-    return (f'<footer class="foot"><div class="wrap">'
-            f'<img src="{prefix}assets/logo-white.svg" alt="Algonova" width="120" height="32">'
-            f'<span>{t("foot")}</span>'
-            f'<a href="https://algonova.com/">algonova.com</a></div></footer>\n')
+    soc = "".join(f'<a href="{u}" target="_blank" rel="noopener" aria-label="{n}">{ic}</a>' for n, u, ic in SOCIAL)
+    return (f'<footer class="foot"><div class="wrap foot-grid">'
+            f'<div class="stack" style="gap:24px"><img src="{prefix}assets/logo-white.svg" alt="Algonova" width="120" height="32">'
+            f'<div class="stack" style="gap:8px"><span class="foot-h">{t("f_contact")}</span>'
+            f'<a href="https://wa.me/622150996971" target="_blank" rel="noopener">WhatsApp: +62 21 50996971</a>'
+            f'<a href="mailto:info@algonova.id">{t("f_email")}: info@algonova.id</a></div></div>'
+            f'<div class="stack" style="gap:24px"><div class="socials">{soc}</div>'
+            f'<div class="stack" style="gap:8px"><span class="foot-h">PT Algonova Indonesia Cerdas · {t("f_rights")}</span>'
+            f'<a class="main" href="{t("f_main")}">algonova.com</a></div></div>'
+            f'</div></footer>\n')
 
 
 # ------------------------------------------------------------------ landing
