@@ -456,6 +456,10 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 /* course + cta */
 .box{border-radius:var(--radius-xl);padding:48px;display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between}
 .box.canvas{background:var(--canvas)}
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:16px;align-items:stretch}
+.duo .box{flex-direction:column;flex-wrap:nowrap;align-items:flex-start;justify-content:space-between;gap:32px;padding:40px;scroll-margin-top:16px}
+.duo .box .txt{flex:none}
+.duo .box.canvas h3{font-size:24px;line-height:1.25}
 .box.violet{background:var(--primary);color:var(--primary-foreground)}
 .box .txt{flex:1 1 480px;display:flex;flex-direction:column;gap:12px}
 .box.violet p{color:var(--on-primary-muted)}
@@ -549,6 +553,9 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
   .cmp td.flex .ok{margin-right:2px}
   .cmp td.price{font-size:16px}
   .foot-grid{grid-template-columns:minmax(0,1fr);gap:32px}
+  .duo{grid-template-columns:minmax(0,1fr)}
+  .duo .box{padding:28px 20px;gap:24px}
+  .duo .box .btn{align-self:stretch}
   .mod{grid-template-columns:minmax(0,1fr);gap:12px}
   .mcards{grid-template-columns:minmax(0,1fr)}
   .bar{flex-direction:column}
@@ -795,12 +802,10 @@ def landing(lang):
 """)
 
     # COURSE + CTA
-    out.append(f"""<section class="sec" style="padding-bottom:0"><div class="wrap">
-<div class="box canvas"><div class="txt"><h2>{t("about_h2")}</h2><p class="muted">{t("about_d")}</p></div>
+    out.append(f"""<section class="sec"><div class="wrap duo">
+<div class="box canvas"><div class="txt"><h3>{t("about_h2")}</h3><p class="muted">{t("about_d")}</p></div>
 <a class="btn btn-secondary" href="{CURRICULUM}" target="_blank" rel="noopener">{t("about_btn")}{I["arrow"](20)}</a></div>
-</div></section>
-<section id="buy" class="sec"><div class="wrap">
-<div class="box violet"><div class="txt"><h2>{t("cta_h2")}</h2><p>{t("cta_d")}</p></div>
+<div class="box violet" id="buy"><div class="txt"><h2>{t("cta_h2")}</h2><p>{t("cta_d")}</p></div>
 <a class="btn btn-wa" href="{wa}" target="_blank" rel="noopener">{I["wa"](22)}{t("cta_btn")}</a></div>
 </div></section>
 </main>
