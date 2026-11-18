@@ -124,6 +124,8 @@ T = {
     "cmp_h2": ("Same course. More support. Lower price.", "Kursus yang sama. Dukungan lebih banyak. Harga lebih murah."),
     "cmp_feature": ("Feature", "Fitur"),
     "cmp_reg": ("Regular format", "Format reguler"),
+    "cmp_reg_s": ("Regular", "Reguler"),
+    "cmp_flex_s": ("Flexible", "Fleksibel"),
     "cmp_flex": ("Flexible format", "Format fleksibel"),
     "best": ("<strong>Best for</strong> busy families, kids who like their own pace, and parents who want to see progress every week.",
              "<strong>Paling cocok untuk</strong> keluarga yang sibuk, anak yang suka belajar sesuai ritmenya sendiri, dan orang tua yang ingin melihat perkembangan setiap minggu."),
@@ -185,31 +187,31 @@ T = {
 
 # comparison rows: label, regular(long, short), flexible(long, short), flexible is a plus?
 CMP = [
-    (("Price per lesson", "Harga per pelajaran"),
+    ((("Price per lesson", "Price"), ("Harga per pelajaran", "Harga")),
      (("Regular price", "Regular"), ("Harga reguler", "Reguler")),
      (("3× cheaper", "3× cheaper"), ("3× lebih murah", "3× lebih murah")), "price"),
-    (("Theory", "Teori"),
+    ((("Theory", "Theory"), ("Teori", "Teori")),
      (("Explained only in the live lesson", "Only live"), ("Dijelaskan hanya di kelas live", "Hanya di kelas live")),
      (("Video in every lesson, rewatch anytime", "Video, rewatch anytime"), ("Video di setiap pelajaran, bisa ditonton ulang kapan saja", "Video, bisa diulang")), "plus"),
-    (("Simulators", "Simulator"),
+    ((("Simulators", "Simulators"), ("Simulator", "Simulator")),
      (("No simulators", "—"), ("Tidak ada simulator", "—")),
      (("New: interactive puzzles in every lesson", "In every lesson"), ("Baru: teka-teki interaktif di setiap pelajaran", "Di setiap pelajaran")), "plus"),
-    (("Support between lessons", "Bantuan di antara kelas"),
+    ((("Support between lessons", "Daily support"), ("Bantuan di antara kelas", "Bantuan harian")),
      (("No daily support", "No daily chat"), ("Tidak ada bantuan harian", "Tidak ada chat harian")),
      (("Discord chat every day, 15:00–20:00 WIB", "Daily, 15:00–20:00"), ("Chat Discord setiap hari, 15:00–20:00 WIB", "Setiap hari, 15:00–20:00")), "plus"),
-    (("Report to parent", "Laporan untuk orang tua"),
+    ((("Report to parent", "Reports"), ("Laporan untuk orang tua", "Laporan")),
      (("Once a month", "Monthly"), ("Sebulan sekali", "Bulanan")),
      (("Every week + a PDF report every 3 weeks", "Weekly + PDF"), ("Setiap minggu + laporan PDF setiap 3 minggu", "Mingguan + PDF")), "plus"),
-    (("Missed lesson", "Kelas terlewat"),
+    ((("Missed lesson", "Missed lesson"), ("Kelas terlewat", "Kelas terlewat")),
      (("Make-up or lost", "Make-up or lost"), ("Kelas pengganti atau hangus", "Diganti atau hangus")),
      (("Recorded, always available", "Recorded"), ("Terekam, selalu tersedia", "Terekam")), "plus"),
-    (("Pace", "Ritme belajar"),
+    ((("Pace", "Pace"), ("Ritme belajar", "Ritme belajar")),
      (("Fixed weekly schedule", "Fixed schedule"), ("Jadwal mingguan tetap", "Jadwal tetap")),
      (("Your child's own pace", "Own pace"), ("Sesuai ritme anak", "Ritme anak")), "plus"),
-    (("36 topics and certificate", "36 topik dan sertifikat"),
+    ((("36 topics and certificate", "Topics & certificate"), ("36 topik dan sertifikat", "Topik & sertifikat")),
      (("Yes", "Yes"), ("Ya", "Ya")),
      (("Same", "Same"), ("Sama", "Sama")), "plus"),
-    (("Live lessons with a tutor", "Kelas live bersama tutor"),
+    ((("Live lessons with a tutor", "Live with a tutor"), ("Kelas live bersama tutor", "Kelas live")),
      (("Every week", "Every week"), ("Setiap minggu", "Setiap minggu")),
      (("Every 3 weeks", "Every 3 weeks"), ("Setiap 3 minggu", "Setiap 3 minggu")), "neutral"),
 ]
@@ -521,18 +523,17 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
   .acc .act .o1,.acc[open] .act .o2{display:none}
   .acc-body{padding:4px 12px 16px}
   .rep-item{padding:20px}
-  /* comparison: fits the phone width, no sideways scroll */
+  /* comparison: compact 3-column table, fits the phone width */
   .cmp .l{display:none}
   .cmp .s{display:inline}
-  .cmp thead tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
-  .cmp thead th:first-child{display:none}
-  .cmp thead th{padding:12px}
-  .cmp tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));padding:12px 12px 0}
-  .cmp tbody th{grid-column:1/-1;width:auto;padding:0 0 8px;font-size:12px;line-height:16px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted-foreground)}
-  .cmp td{width:auto!important;padding:8px 12px 12px 0;line-height:1.3}
-  .cmp td.flex{padding:8px 12px 12px;border-radius:var(--radius-md) var(--radius-md) 0 0}
-  .cmp tbody tr:last-child td.flex{border-radius:var(--radius-md)}
-  .cmp td.price{font-size:20px}
+  .cmp table{table-layout:fixed}
+  .cmp th,.cmp td{padding:12px 8px;font-size:14px;line-height:1.3}
+  .cmp thead th{font-size:12px;letter-spacing:.04em;padding:14px 8px}
+  .cmp thead th:first-child,.cmp tbody th{width:31%;padding-left:12px}
+  .cmp tbody th{font-weight:700;color:var(--foreground)}
+  .cmp td.reg{width:31%}
+  .cmp td.flex .ok{margin-right:2px}
+  .cmp td.price{font-size:16px}
   .mod{grid-template-columns:minmax(0,1fr);gap:12px}
   .mcards{grid-template-columns:minmax(0,1fr)}
   .bar{flex-direction:column}
@@ -747,13 +748,14 @@ def landing(lang):
         fl, fs = flex[i]
         ok = f'<span class="ok" aria-hidden="true">✓</span>' if kind == "plus" else ""
         cls = "flex" + (" price" if kind == "price" else "") + (" neutral" if kind == "neutral" else "")
-        rows.append(f'<tr><th scope="row">{label[i]}</th>'
+        ll, ls = label[i]
+        rows.append(f'<tr><th scope="row"><span class="l">{ll}</span><span class="s">{ls}</span></th>'
                     f'<td class="reg"><span class="l">{rl}</span><span class="s">{rs}</span></td>'
                     f'<td class="{cls}">{ok}<span class="l">{fl}</span><span class="s">{fs}</span></td></tr>')
     out.append(f"""<section id="compare" class="sec"><div class="wrap stack" style="gap:32px">
 <div class="head"><span class="eyebrow">{t("cmp_eyebrow")}</span><h2>{t("cmp_h2")}</h2></div>
 <div class="cmp"><table>
-<thead><tr><th scope="col"><span class="sr">{t("cmp_feature")}</span></th><th scope="col">{t("cmp_reg")}</th><th scope="col" class="flex">{t("cmp_flex")}</th></tr></thead>
+<thead><tr><th scope="col"><span class="sr">{t("cmp_feature")}</span></th><th scope="col"><span class="l">{t("cmp_reg")}</span><span class="s">{t("cmp_reg_s")}</span></th><th scope="col" class="flex"><span class="l">{t("cmp_flex")}</span><span class="s">{t("cmp_flex_s")}</span></th></tr></thead>
 <tbody>
 {chr(10).join(rows)}
 </tbody></table></div>

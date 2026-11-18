@@ -273,18 +273,17 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
   .acc .act .o1,.acc[open] .act .o2{display:none}
   .acc-body{padding:4px 12px 16px}
   .rep-item{padding:20px}
-  /* comparison: fits the phone width, no sideways scroll */
+  /* comparison: compact 3-column table, fits the phone width */
   .cmp .l{display:none}
   .cmp .s{display:inline}
-  .cmp thead tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
-  .cmp thead th:first-child{display:none}
-  .cmp thead th{padding:12px}
-  .cmp tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));padding:12px 12px 0}
-  .cmp tbody th{grid-column:1/-1;width:auto;padding:0 0 8px;font-size:12px;line-height:16px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted-foreground)}
-  .cmp td{width:auto!important;padding:8px 12px 12px 0;line-height:1.3}
-  .cmp td.flex{padding:8px 12px 12px;border-radius:var(--radius-md) var(--radius-md) 0 0}
-  .cmp tbody tr:last-child td.flex{border-radius:var(--radius-md)}
-  .cmp td.price{font-size:20px}
+  .cmp table{table-layout:fixed}
+  .cmp th,.cmp td{padding:12px 8px;font-size:14px;line-height:1.3}
+  .cmp thead th{font-size:12px;letter-spacing:.04em;padding:14px 8px}
+  .cmp thead th:first-child,.cmp tbody th{width:31%;padding-left:12px}
+  .cmp tbody th{font-weight:700;color:var(--foreground)}
+  .cmp td.reg{width:31%}
+  .cmp td.flex .ok{margin-right:2px}
+  .cmp td.price{font-size:16px}
   .mod{grid-template-columns:minmax(0,1fr);gap:12px}
   .mcards{grid-template-columns:minmax(0,1fr)}
   .bar{flex-direction:column}
@@ -391,17 +390,17 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 <section id="compare" class="sec"><div class="wrap stack" style="gap:32px">
 <div class="head"><span class="eyebrow">Comparison</span><h2>Same course. More support. Lower price.</h2></div>
 <div class="cmp"><table>
-<thead><tr><th scope="col"><span class="sr">Feature</span></th><th scope="col">Regular format</th><th scope="col" class="flex">Flexible format</th></tr></thead>
+<thead><tr><th scope="col"><span class="sr">Feature</span></th><th scope="col"><span class="l">Regular format</span><span class="s">Regular</span></th><th scope="col" class="flex"><span class="l">Flexible format</span><span class="s">Flexible</span></th></tr></thead>
 <tbody>
-<tr><th scope="row">Price per lesson</th><td class="reg"><span class="l">Regular price</span><span class="s">Regular</span></td><td class="flex price"><span class="l">3× cheaper</span><span class="s">3× cheaper</span></td></tr>
-<tr><th scope="row">Theory</th><td class="reg"><span class="l">Explained only in the live lesson</span><span class="s">Only live</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Video in every lesson, rewatch anytime</span><span class="s">Video, rewatch anytime</span></td></tr>
-<tr><th scope="row">Simulators</th><td class="reg"><span class="l">No simulators</span><span class="s">—</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">New: interactive puzzles in every lesson</span><span class="s">In every lesson</span></td></tr>
-<tr><th scope="row">Support between lessons</th><td class="reg"><span class="l">No daily support</span><span class="s">No daily chat</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Discord chat every day, 15:00–20:00 WIB</span><span class="s">Daily, 15:00–20:00</span></td></tr>
-<tr><th scope="row">Report to parent</th><td class="reg"><span class="l">Once a month</span><span class="s">Monthly</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Every week + a PDF report every 3 weeks</span><span class="s">Weekly + PDF</span></td></tr>
-<tr><th scope="row">Missed lesson</th><td class="reg"><span class="l">Make-up or lost</span><span class="s">Make-up or lost</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Recorded, always available</span><span class="s">Recorded</span></td></tr>
-<tr><th scope="row">Pace</th><td class="reg"><span class="l">Fixed weekly schedule</span><span class="s">Fixed schedule</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Your child's own pace</span><span class="s">Own pace</span></td></tr>
-<tr><th scope="row">36 topics and certificate</th><td class="reg"><span class="l">Yes</span><span class="s">Yes</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Same</span><span class="s">Same</span></td></tr>
-<tr><th scope="row">Live lessons with a tutor</th><td class="reg"><span class="l">Every week</span><span class="s">Every week</span></td><td class="flex neutral"><span class="l">Every 3 weeks</span><span class="s">Every 3 weeks</span></td></tr>
+<tr><th scope="row"><span class="l">Price per lesson</span><span class="s">Price</span></th><td class="reg"><span class="l">Regular price</span><span class="s">Regular</span></td><td class="flex price"><span class="l">3× cheaper</span><span class="s">3× cheaper</span></td></tr>
+<tr><th scope="row"><span class="l">Theory</span><span class="s">Theory</span></th><td class="reg"><span class="l">Explained only in the live lesson</span><span class="s">Only live</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Video in every lesson, rewatch anytime</span><span class="s">Video, rewatch anytime</span></td></tr>
+<tr><th scope="row"><span class="l">Simulators</span><span class="s">Simulators</span></th><td class="reg"><span class="l">No simulators</span><span class="s">—</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">New: interactive puzzles in every lesson</span><span class="s">In every lesson</span></td></tr>
+<tr><th scope="row"><span class="l">Support between lessons</span><span class="s">Daily support</span></th><td class="reg"><span class="l">No daily support</span><span class="s">No daily chat</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Discord chat every day, 15:00–20:00 WIB</span><span class="s">Daily, 15:00–20:00</span></td></tr>
+<tr><th scope="row"><span class="l">Report to parent</span><span class="s">Reports</span></th><td class="reg"><span class="l">Once a month</span><span class="s">Monthly</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Every week + a PDF report every 3 weeks</span><span class="s">Weekly + PDF</span></td></tr>
+<tr><th scope="row"><span class="l">Missed lesson</span><span class="s">Missed lesson</span></th><td class="reg"><span class="l">Make-up or lost</span><span class="s">Make-up or lost</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Recorded, always available</span><span class="s">Recorded</span></td></tr>
+<tr><th scope="row"><span class="l">Pace</span><span class="s">Pace</span></th><td class="reg"><span class="l">Fixed weekly schedule</span><span class="s">Fixed schedule</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Your child's own pace</span><span class="s">Own pace</span></td></tr>
+<tr><th scope="row"><span class="l">36 topics and certificate</span><span class="s">Topics & certificate</span></th><td class="reg"><span class="l">Yes</span><span class="s">Yes</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Same</span><span class="s">Same</span></td></tr>
+<tr><th scope="row"><span class="l">Live lessons with a tutor</span><span class="s">Live with a tutor</span></th><td class="reg"><span class="l">Every week</span><span class="s">Every week</span></td><td class="flex neutral"><span class="l">Every 3 weeks</span><span class="s">Every 3 weeks</span></td></tr>
 </tbody></table></div>
 <p class="muted"><strong>Best for</strong> busy families, kids who like their own pace, and parents who want to see progress every week.</p>
 </div></section>

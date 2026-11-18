@@ -273,18 +273,17 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
   .acc .act .o1,.acc[open] .act .o2{display:none}
   .acc-body{padding:4px 12px 16px}
   .rep-item{padding:20px}
-  /* comparison: fits the phone width, no sideways scroll */
+  /* comparison: compact 3-column table, fits the phone width */
   .cmp .l{display:none}
   .cmp .s{display:inline}
-  .cmp thead tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
-  .cmp thead th:first-child{display:none}
-  .cmp thead th{padding:12px}
-  .cmp tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));padding:12px 12px 0}
-  .cmp tbody th{grid-column:1/-1;width:auto;padding:0 0 8px;font-size:12px;line-height:16px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted-foreground)}
-  .cmp td{width:auto!important;padding:8px 12px 12px 0;line-height:1.3}
-  .cmp td.flex{padding:8px 12px 12px;border-radius:var(--radius-md) var(--radius-md) 0 0}
-  .cmp tbody tr:last-child td.flex{border-radius:var(--radius-md)}
-  .cmp td.price{font-size:20px}
+  .cmp table{table-layout:fixed}
+  .cmp th,.cmp td{padding:12px 8px;font-size:14px;line-height:1.3}
+  .cmp thead th{font-size:12px;letter-spacing:.04em;padding:14px 8px}
+  .cmp thead th:first-child,.cmp tbody th{width:31%;padding-left:12px}
+  .cmp tbody th{font-weight:700;color:var(--foreground)}
+  .cmp td.reg{width:31%}
+  .cmp td.flex .ok{margin-right:2px}
+  .cmp td.price{font-size:16px}
   .mod{grid-template-columns:minmax(0,1fr);gap:12px}
   .mcards{grid-template-columns:minmax(0,1fr)}
   .bar{flex-direction:column}
@@ -391,17 +390,17 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 <section id="compare" class="sec"><div class="wrap stack" style="gap:32px">
 <div class="head"><span class="eyebrow">Perbandingan</span><h2>Kursus yang sama. Dukungan lebih banyak. Harga lebih murah.</h2></div>
 <div class="cmp"><table>
-<thead><tr><th scope="col"><span class="sr">Fitur</span></th><th scope="col">Format reguler</th><th scope="col" class="flex">Format fleksibel</th></tr></thead>
+<thead><tr><th scope="col"><span class="sr">Fitur</span></th><th scope="col"><span class="l">Format reguler</span><span class="s">Reguler</span></th><th scope="col" class="flex"><span class="l">Format fleksibel</span><span class="s">Fleksibel</span></th></tr></thead>
 <tbody>
-<tr><th scope="row">Harga per pelajaran</th><td class="reg"><span class="l">Harga reguler</span><span class="s">Reguler</span></td><td class="flex price"><span class="l">3× lebih murah</span><span class="s">3× lebih murah</span></td></tr>
-<tr><th scope="row">Teori</th><td class="reg"><span class="l">Dijelaskan hanya di kelas live</span><span class="s">Hanya di kelas live</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Video di setiap pelajaran, bisa ditonton ulang kapan saja</span><span class="s">Video, bisa diulang</span></td></tr>
-<tr><th scope="row">Simulator</th><td class="reg"><span class="l">Tidak ada simulator</span><span class="s">—</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Baru: teka-teki interaktif di setiap pelajaran</span><span class="s">Di setiap pelajaran</span></td></tr>
-<tr><th scope="row">Bantuan di antara kelas</th><td class="reg"><span class="l">Tidak ada bantuan harian</span><span class="s">Tidak ada chat harian</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Chat Discord setiap hari, 15:00–20:00 WIB</span><span class="s">Setiap hari, 15:00–20:00</span></td></tr>
-<tr><th scope="row">Laporan untuk orang tua</th><td class="reg"><span class="l">Sebulan sekali</span><span class="s">Bulanan</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Setiap minggu + laporan PDF setiap 3 minggu</span><span class="s">Mingguan + PDF</span></td></tr>
-<tr><th scope="row">Kelas terlewat</th><td class="reg"><span class="l">Kelas pengganti atau hangus</span><span class="s">Diganti atau hangus</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Terekam, selalu tersedia</span><span class="s">Terekam</span></td></tr>
-<tr><th scope="row">Ritme belajar</th><td class="reg"><span class="l">Jadwal mingguan tetap</span><span class="s">Jadwal tetap</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Sesuai ritme anak</span><span class="s">Ritme anak</span></td></tr>
-<tr><th scope="row">36 topik dan sertifikat</th><td class="reg"><span class="l">Ya</span><span class="s">Ya</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Sama</span><span class="s">Sama</span></td></tr>
-<tr><th scope="row">Kelas live bersama tutor</th><td class="reg"><span class="l">Setiap minggu</span><span class="s">Setiap minggu</span></td><td class="flex neutral"><span class="l">Setiap 3 minggu</span><span class="s">Setiap 3 minggu</span></td></tr>
+<tr><th scope="row"><span class="l">Harga per pelajaran</span><span class="s">Harga</span></th><td class="reg"><span class="l">Harga reguler</span><span class="s">Reguler</span></td><td class="flex price"><span class="l">3× lebih murah</span><span class="s">3× lebih murah</span></td></tr>
+<tr><th scope="row"><span class="l">Teori</span><span class="s">Teori</span></th><td class="reg"><span class="l">Dijelaskan hanya di kelas live</span><span class="s">Hanya di kelas live</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Video di setiap pelajaran, bisa ditonton ulang kapan saja</span><span class="s">Video, bisa diulang</span></td></tr>
+<tr><th scope="row"><span class="l">Simulator</span><span class="s">Simulator</span></th><td class="reg"><span class="l">Tidak ada simulator</span><span class="s">—</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Baru: teka-teki interaktif di setiap pelajaran</span><span class="s">Di setiap pelajaran</span></td></tr>
+<tr><th scope="row"><span class="l">Bantuan di antara kelas</span><span class="s">Bantuan harian</span></th><td class="reg"><span class="l">Tidak ada bantuan harian</span><span class="s">Tidak ada chat harian</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Chat Discord setiap hari, 15:00–20:00 WIB</span><span class="s">Setiap hari, 15:00–20:00</span></td></tr>
+<tr><th scope="row"><span class="l">Laporan untuk orang tua</span><span class="s">Laporan</span></th><td class="reg"><span class="l">Sebulan sekali</span><span class="s">Bulanan</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Setiap minggu + laporan PDF setiap 3 minggu</span><span class="s">Mingguan + PDF</span></td></tr>
+<tr><th scope="row"><span class="l">Kelas terlewat</span><span class="s">Kelas terlewat</span></th><td class="reg"><span class="l">Kelas pengganti atau hangus</span><span class="s">Diganti atau hangus</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Terekam, selalu tersedia</span><span class="s">Terekam</span></td></tr>
+<tr><th scope="row"><span class="l">Ritme belajar</span><span class="s">Ritme belajar</span></th><td class="reg"><span class="l">Jadwal mingguan tetap</span><span class="s">Jadwal tetap</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Sesuai ritme anak</span><span class="s">Ritme anak</span></td></tr>
+<tr><th scope="row"><span class="l">36 topik dan sertifikat</span><span class="s">Topik & sertifikat</span></th><td class="reg"><span class="l">Ya</span><span class="s">Ya</span></td><td class="flex"><span class="ok" aria-hidden="true">✓</span><span class="l">Sama</span><span class="s">Sama</span></td></tr>
+<tr><th scope="row"><span class="l">Kelas live bersama tutor</span><span class="s">Kelas live</span></th><td class="reg"><span class="l">Setiap minggu</span><span class="s">Setiap minggu</span></td><td class="flex neutral"><span class="l">Setiap 3 minggu</span><span class="s">Setiap 3 minggu</span></td></tr>
 </tbody></table></div>
 <p class="muted"><strong>Paling cocok untuk</strong> keluarga yang sibuk, anak yang suka belajar sesuai ritmenya sendiri, dan orang tua yang ingin melihat perkembangan setiap minggu.</p>
 </div></section>
