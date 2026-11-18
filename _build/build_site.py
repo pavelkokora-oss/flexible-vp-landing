@@ -276,7 +276,7 @@ CSS = r"""
   --hero:#101828; --hero-glow:rgba(88,0,229,.6);
   --on-dark:#FFFFFF; --on-dark-muted:rgba(255,255,255,.78); --on-dark-fill:rgba(255,255,255,.08); --on-dark-hover:rgba(255,255,255,.16);
   --on-primary-muted:rgba(255,255,255,.86); --on-primary-fill:rgba(255,255,255,.14);
-  --wa:#075E54; --wa-hover:#054A42;
+  --wa:#25D366; --wa-hover:#1EBE5A;
   --radius-xs:2px; --radius-sm:4px; --radius-md:8px; --radius-lg:12px; --radius-xl:16px; --radius-pill:999px;
   --shadow-e2:0 1px 2px rgba(16,24,40,.03),0 3px 10px rgba(16,24,40,.04);
   --shadow-e3:0 2px 6px rgba(16,24,40,.05),0 12px 32px rgba(16,24,40,.08);
