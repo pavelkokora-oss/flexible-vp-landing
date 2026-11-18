@@ -41,7 +41,7 @@ T = {
     # included
     "inc_eyebrow": ("What's included", "Yang didapat"),
     "inc_h2": ("Everything your child needs to learn coding", "Semua yang dibutuhkan anak untuk belajar coding"),
-    "inc_total": ("<b>36 lessons + 12 live meetings</b> over 36 weeks", "<b>36 pelajaran + 12 pertemuan live</b> selama 36 minggu"),
+    "inc_total": ("<b>36 lessons + 12 live meetings</b>", "<b>36 pelajaran + 12 pertemuan live</b>"),
     "c1t": ("36 lessons, one a week", "36 pelajaran, satu per minggu"),
     "c1d": ("Each lesson is 3–5 short parts of 15–20 minutes: a video, a quiz, a simulator and Scratch tasks.",
             "Setiap pelajaran terdiri dari 3–5 bagian singkat, masing-masing 15–20 menit: video, kuis, simulator, dan tugas Scratch."),
