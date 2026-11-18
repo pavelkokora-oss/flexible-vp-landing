@@ -628,6 +628,9 @@ JS = r"""
 
 # ------------------------------------------------------------------ helpers
 def head(lang, title, desc, ogdesc, prefix, alt_id, alt_en, noindex=False):
+    alts = "" if alt_en is None else (f'<link rel="alternate" hreflang="id" href="{BASE}{alt_id}">\n'
+                                      f'<link rel="alternate" hreflang="en" href="{BASE}{alt_en}">\n'
+                                      f'<link rel="alternate" hreflang="x-default" href="{BASE}{alt_id}">\n')
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -639,10 +642,7 @@ def head(lang, title, desc, ogdesc, prefix, alt_id, alt_en, noindex=False):
 <meta property="og:description" content="{ogdesc}">
 <meta name="theme-color" content="#101828">{'<meta name="robots" content="noindex">' if noindex else ""}
 <link rel="icon" href="{prefix}assets/logo-white.svg">
-<link rel="alternate" hreflang="id" href="{BASE}{alt_id}">
-<link rel="alternate" hreflang="en" href="{BASE}{alt_en}">
-<link rel="alternate" hreflang="x-default" href="{BASE}{alt_id}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+{alts}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>{CSS}</style>
@@ -663,7 +663,7 @@ def nav(t, prefix, home_href, items):
             sw += f'<a href="{href}"{hla}{la}>{label}</a>'
     return (f'<nav class="nav">\n<a href="{home_href}" aria-label="Algonova"><img src="{prefix}assets/logo-white.svg" alt="Algonova" width="120" height="32"></a>\n'
             f'<div class="nav-right"><span class="nav-tag">{t("navtag")}</span>'
-            f'<div class="lang" role="navigation" aria-label="{t("langlabel")}">{sw}</div></div>\n</nav>')
+            + (f'<div class="lang" role="navigation" aria-label="{t("langlabel")}">{sw}</div>' if sw else "") + '</div>\n</nav>')
 
 
 def loop(prefix, name, label, w, h):
@@ -701,13 +701,15 @@ def footer(t, prefix):
 def landing(lang, variant="main"):
     i = 0 if lang == "en" else 1
     t = lambda k: T[k][i]
-    test = variant != "main"
+    test = variant not in ("main", "book")
     prefix = ("../" if lang == "en" else "") + ("../" if test else "")
     meetings = "../meetings/" if test else "meetings/"
     wa = f"https://wa.me/{WA_NUM}?text={WA_TEXT[lang]}"
-    out = [head(lang, t("title"), t("desc"), t("ogdesc"), prefix, "", "en/", noindex=test)]
+    out = [head(lang, t("title"), t("desc"), t("ogdesc"), prefix, "", None if variant == "book" else "en/", noindex=test)]
     root = prefix  # path to site root
-    if not test:
+    if variant == "book":
+        items = []
+    elif not test:
         items = [("ID", None if lang == "id" else root, "id"), ("EN", None if lang == "en" else root + "en/", "en"),
                  ("TEST", "test/", None), ("TEST 2", "test2/", None)]
     else:
@@ -719,9 +721,9 @@ def landing(lang, variant="main"):
     line_a = "" if variant == "test" else f'<img class="ln ln-a" src="{prefix}assets/lines/violet.svg" alt="" aria-hidden="true">'
     if False:
         visual = ""
-    elif variant == "test2":
-        book_file = "book_visual_coding_id.webp" if lang == "id" else "book_visual_coding.webp"
-        book_alt = "Pemrograman Visual · 8–11 tahun" if lang == "id" else "Visual Coding · 8–11 years"
+    elif variant in ("test2", "book"):
+        book_file = "book_visual_coding.webp"
+        book_alt = "Buku Visual Coding · 8–11 tahun" if lang == "id" else "Visual Coding · 8–11 years"
         visual = (f'<figure class="hero-visual hero-book"><img src="{prefix}assets/hero/{book_file}" alt="{book_alt}" width="720" height="1046"></figure>')
     else:
         visual = (f'<div class="stat hero-visual">\n<img class="sticker" src="{prefix}assets/sticker-scratch.svg" alt="" aria-hidden="true">\n'
@@ -891,17 +893,17 @@ def landing(lang, variant="main"):
 
 
 # ------------------------------------------------------------------ meetings page
-def meetings(lang):
+def meetings(lang, single=False):
     i = 0 if lang == "en" else 1
     t = lambda k: T[k][i]
     prefix = "../../" if lang == "en" else "../"
     wa = f"https://wa.me/{WA_NUM}?text={WA_TEXT[lang]}"
     landing_href = "../"
-    out = [head(lang, t("m_title"), t("m_desc"), t("m_desc"), prefix, "meetings/", "en/meetings/")]
+    out = [head(lang, t("m_title"), t("m_desc"), t("m_desc"), prefix, "meetings/", None if single else "en/meetings/")]
     id_href = "../../meetings/" if lang == "en" else "./"
     en_href = "../en/meetings/" if lang == "id" else "./"
     out.append(f"""<header class="hero hero-sm"><div class="wrap">
-{nav(t, prefix, landing_href, [("ID", None if lang == "id" else id_href, "id"), ("EN", None if lang == "en" else en_href, "en")])}
+{nav(t, prefix, landing_href, [] if single else [("ID", None if lang == "id" else id_href, "id"), ("EN", None if lang == "en" else en_href, "en")])}
 <a class="back" href="{landing_href}">{I["back"](20)}{t("m_back")}</a>
 <div class="hero-copy">
 <span class="eyebrow">{t("m_eyebrow")}</span>
@@ -954,10 +956,5 @@ def write(rel, html):
     print("wrote", rel, len(html))
 
 
-write("index.html", landing("id"))
-write("en/index.html", landing("en"))
-for v in ("test", "test2"):
-    write(f"{v}/index.html", landing("id", v))
-    write(f"en/{v}/index.html", landing("en", v))
-write("meetings/index.html", meetings("id"))
-write("en/meetings/index.html", meetings("en"))
+write("index.html", landing("id", "book"))
+write("meetings/index.html", meetings("id", single=True))
