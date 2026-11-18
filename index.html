@@ -134,13 +134,32 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .rep{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center}
 .rep-items{display:flex;flex-direction:column;gap:16px}
 .rep-item{background:var(--canvas);border-radius:var(--radius-lg);padding:24px;display:flex;gap:16px;align-items:flex-start}
+.bg-canvas .rep-item{background:var(--card);box-shadow:var(--shadow-e2)}
 .rep-item p{color:var(--muted-foreground)}
 .rep-media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
-.rep-media .fig{background:var(--canvas);box-shadow:none}
 
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.step{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-e2);padding:24px;display:flex;flex-direction:column;gap:8px}
+.step{background:var(--canvas);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:8px}
+.bg-canvas .step{background:var(--card);box-shadow:var(--shadow-e2)}
+
+/* expandable details */
+.more{display:flex;flex-direction:column;gap:12px}
+.acc{background:var(--canvas);border-radius:var(--radius-lg);scroll-margin-top:16px}
+.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:16px 20px;min-height:80px;border-radius:var(--radius-lg);transition:background var(--dur) var(--ease)}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary:hover{background:var(--surface-hover)}
+.acc summary:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.acc[open] summary{border-radius:var(--radius-lg) var(--radius-lg) 0 0}
+.acc .sm{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+.acc .sm b{font-size:20px;line-height:1.3;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.acc .sm span{color:var(--muted-foreground)}
+.acc .act{display:inline-flex;align-items:center;gap:8px;color:var(--primary);font-weight:600;flex:none}
+.acc .act svg{transition:transform var(--dur) var(--ease)}
+.acc[open] .act svg{transform:rotate(90deg)}
+.acc .o2,.acc[open] .o1{display:none}
+.acc[open] .o2{display:inline}
+.acc-body{padding:8px 20px 24px;display:flex;flex-direction:column;gap:20px}
 .step .n{width:40px;height:40px;border-radius:var(--radius-pill);background:var(--primary);color:var(--primary-foreground);display:inline-flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:8px}
 .step .e{font-size:12px;line-height:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--primary)}
 .step p{color:var(--muted-foreground)}
@@ -249,6 +268,9 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
   .box{padding:28px 20px}
   .box .btn{flex:1 1 100%}
   .rep-media{gap:12px}
+  .acc summary{padding:16px;gap:12px}
+  .acc .act .o1,.acc[open] .act .o2{display:none}
+  .acc-body{padding:4px 12px 16px}
   .rep-item{padding:20px}
   /* comparison: fits the phone width, no sideways scroll */
   .cmp .l{display:none}
@@ -299,20 +321,34 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 </div>
 </div></header>
 <main>
-<section id="included" class="sec"><div class="wrap stack" style="gap:40px">
+<section id="kevin" class="sec"><div class="wrap kev">
+<div class="head"><h2>Tutor menjelaskan format fleksibel dalam 50 detik</h2><p class="lead">Kevin adalah guru Pemrograman Visual di Algonova dan merekam video pelajarannya.</p></div>
+<figure class="fig"><video controls playsinline preload="none" width="1280" height="720" poster="assets/media/kevin_welcome.jpg"><source src="assets/media/kevin_welcome.mp4" type="video/mp4"></video><figcaption>Kevin, guru Pemrograman Visual · 50 detik</figcaption></figure>
+</div></section>
+<section id="included" class="sec bg-canvas"><div class="wrap stack" style="gap:40px">
 <div class="head"><span class="eyebrow">Yang didapat</span><h2>Semua yang dibutuhkan anak untuk belajar coding</h2></div>
 <div class="grid3">
-<article class="card"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="7 4 20 12 7 20 7 4" fill="currentColor"></polygon></svg></span><h3>36 pelajaran, satu per minggu</h3><p>Setiap pelajaran terdiri dari 3–5 bagian singkat, masing-masing 15–20 menit: video, kuis, simulator, dan tugas Scratch.</p></article>
+<article class="card"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="7 4 20 12 7 20 7 4" fill="currentColor"></polygon></svg></span><h3>36 pelajaran, satu per minggu</h3><p>Setiap pelajaran terdiri dari 3–5 bagian singkat, masing-masing 15–20 menit: video, kuis, simulator, dan tugas Scratch.</p><a class="link" href="#more-lesson">Lihat isi pelajaran<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></article>
 <article class="card on-primary"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 20l4-4 4 4"></path></svg></span><h3>12 pertemuan live bersama tutor</h3><p>90 menit dalam grup kecil premium berisi 4 siswa, setiap 3 minggu.</p><a class="link" href="meetings/">Lihat semua 12 pertemuan<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></article>
-<article class="card"><div class="card-top"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 3h4v3a2 2 0 1 0 4 0V3h3v7h-3a2 2 0 1 0 0 4h3v7h-7v-3a2 2 0 1 0-4 0v3H3v-7h3a2 2 0 1 0 0-4H3V3h7z"></path></svg></span><span class="badge">Baru</span></div><h3>Simulator</h3><p>Teka-teki interaktif tempat anak mencoba ide sebelum menuliskannya dalam kode. Kursus reguler tidak memilikinya.</p></article>
-<article class="card"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"></path></svg></span><h3>Bantuan chat setiap hari</h3><p>Di Discord, pukul 15:00–20:00 WIB. Moderator menjawab lebih dulu, tutor membantu pertanyaan yang lebih sulit.</p></article>
-<article class="card"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h6"></path></svg></span><h3>Laporan untuk orang tua</h3><p>Pesan WhatsApp singkat setiap minggu dan laporan PDF setiap 3 minggu.</p></article>
+<article class="card"><div class="card-top"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 3h4v3a2 2 0 1 0 4 0V3h3v7h-3a2 2 0 1 0 0 4h3v7h-7v-3a2 2 0 1 0-4 0v3H3v-7h3a2 2 0 1 0 0-4H3V3h7z"></path></svg></span><span class="badge">Baru</span></div><h3>Simulator</h3><p>Teka-teki interaktif tempat anak mencoba ide sebelum menuliskannya dalam kode. Kursus reguler tidak memilikinya.</p><a class="link" href="#more-sim">Lihat simulatornya<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></article>
+<article class="card"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"></path></svg></span><h3>Bantuan chat setiap hari</h3><p>Di Discord, pukul 15:00–20:00 WIB. Moderator menjawab lebih dulu, tutor membantu pertanyaan yang lebih sulit.</p><a class="link" href="#more-discord">Lihat contoh<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></article>
+<article class="card"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h6"></path></svg></span><h3>Laporan untuk orang tua</h3><p>Pesan WhatsApp singkat setiap minggu dan laporan PDF setiap 3 minggu.</p><a class="link" href="#reports">Lihat contoh<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></article>
 <article class="card"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 4h8v5a4 4 0 0 1-8 0V4zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"></path></svg></span><h3>Sertifikat</h3><p>36 topik yang sama dengan kursus reguler. Sertifikat diberikan di akhir kursus.</p></article>
 </div>
 <p class="total"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg><span><b>36 pelajaran + 12 pertemuan live</b> selama 36 minggu</span></p>
 </div></section>
-<section id="lesson" class="sec bg-canvas"><div class="wrap stack" style="gap:40px">
-<div class="head"><span class="eyebrow">Isi satu pelajaran</span><h2>Satu pelajaran lebih dari sekadar satu video</h2><p class="lead">Satu pelajaran per minggu: 3–5 bagian singkat 15–20 menit berisi video, kuis, simulator, dan tugas Scratch. Pertanyaan diajukan ke tutor dan tim komunitas di Discord.</p></div>
+<section id="how" class="sec"><div class="wrap stack" style="gap:40px">
+<div class="head"><span class="eyebrow">Cara kerjanya</span><h2>Belajar di rumah sesuai ritme sendiri.<br>Bantuan di chat setiap hari.<br>Pertemuan live setiap 3 minggu.</h2></div>
+<div class="steps">
+<article class="step"><span class="n">0</span><span class="e">Setelah pembayaran</span><h3>Pertemuan perkenalan dan orientasi</h3><p>Anak berkenalan dengan tutor dan grup, lalu mengerjakan tugas orientasi pertama di platform belajar.</p></article>
+<article class="step"><span class="n">1</span><span class="e">Setiap minggu</span><h3>Di rumah: satu pelajaran</h3><p>3–5 bagian singkat 15–20 menit: video, kuis, simulator, tugas Scratch. Pertanyaan diajukan di Discord.</p><a class="link" href="#more-lesson">Lihat isi pelajaran<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></article>
+<article class="step on-primary"><span class="n">2</span><span class="e">Setiap 3 minggu</span><h3>Pertemuan live</h3><p>90 menit bersama tutor dalam grup 4 anak: tunjukkan proyek, perbaiki bug, tantangan grup.</p><a class="link" href="meetings/">Lihat semua 12 pertemuan<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></article>
+<article class="step"><span class="n">3</span><span class="e">Setiap minggu · setiap 3 minggu</span><h3>Laporan</h3><p>Setiap minggu: apa yang sudah dikerjakan anak dan apa selanjutnya. Setiap 3 minggu: laporan PDF berisi proyek dan komentar tutor.</p><a class="link" href="#reports">Lihat contoh<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></article>
+</div>
+<p class="total"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg><span>Langkah 1–3 diulang <b>12 kali</b> selama kursus</span></p>
+<div class="more">
+<h3>Lihat cara kerjanya</h3>
+<details class="acc" id="more-lesson"><summary><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="7 4 20 12 7 20 7 4" fill="currentColor"></polygon></svg></span><span class="sm"><b>Isi satu pelajaran</b><span>3–5 bagian singkat: video, kuis, simulator, tugas Scratch</span></span><span class="act"><span class="o1">Lihat</span><span class="o2">Tutup</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></summary><div class="acc-body"><p class="muted">Satu pelajaran per minggu: 3–5 bagian singkat 15–20 menit berisi video, kuis, simulator, dan tugas Scratch. Pertanyaan diajukan ke tutor dan tim komunitas di Discord.</p>
 <div class="parts">
 <div class="part"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="7 4 20 12 7 20 7 4" fill="currentColor"></polygon></svg></span><h3>Video</h3><p>Guru menjelaskan topik.</p></div>
 <div class="part"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"></path><path d="M12 17.5h.01"></path></svg></span><h3>Kuis</h3><p>Cek singkat apakah materi sudah dipahami.</p></div>
@@ -323,20 +359,22 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 <figure class="fig"><video controls playsinline preload="none" width="1280" height="720" poster="assets/media/kevin_lesson.jpg"><source src="assets/media/kevin_lesson.mp4" type="video/mp4"></video><figcaption>Cuplikan pelajaran asli: Kevin menjelaskan topik · 55 detik</figcaption></figure>
 <figure class="fig"><a class="zoom" href="assets/media/course_map.jpg" target="_blank" rel="noopener" aria-label="Peta kursus di platform belajar — Buka ukuran penuh"><img src="assets/media/course_map.jpg" alt="Peta kursus di platform belajar" width="1600" height="1375" loading="lazy"></a><figcaption>Peta kursus di platform belajar</figcaption></figure>
 </div>
-<div class="panel">
-<div class="panel-head"><div class="row"><span class="badge">Baru</span></div><h3>Simulator: fitur baru utama kami</h3><p class="muted">Anak memecahkan teka-teki langkah demi langkah dan langsung melihat hasilnya. Kursus reguler tidak memiliki simulator.</p></div>
+</div></details>
+<details class="acc" id="more-sim"><summary><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 3h4v3a2 2 0 1 0 4 0V3h3v7h-3a2 2 0 1 0 0 4h3v7h-7v-3a2 2 0 1 0-4 0v3H3v-7h3a2 2 0 1 0 0-4H3V3h7z"></path></svg></span><span class="sm"><b>Simulator <span class="badge">Baru</span></b><span>Fitur baru utama: teka-teki sebelum kode</span></span><span class="act"><span class="o1">Lihat</span><span class="o2">Tutup</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></summary><div class="acc-body"><p class="muted">Anak memecahkan teka-teki langkah demi langkah dan langsung melihat hasilnya. Kursus reguler tidak memiliki simulator.</p>
 <div class="grid3">
-<figure class="fig flat"><video class="loop" muted loop playsinline autoplay preload="none" width="960" height="530" poster="assets/media/sim_noodles_demo.jpg" aria-label="Susun langkah: bantu astrokadet memasak mi"><source src="assets/media/sim_noodles_demo.mp4" type="video/mp4"></video><figcaption>Susun langkah: bantu astrokadet memasak mi</figcaption></figure>
-<figure class="fig flat"><video class="loop" muted loop playsinline autoplay preload="none" width="960" height="530" poster="assets/media/sim_path_demo.jpg" aria-label="Susun program: antar Bot Mars sampai ke bendera"><source src="assets/media/sim_path_demo.mp4" type="video/mp4"></video><figcaption>Susun program: antar Bot Mars sampai ke bendera</figcaption></figure>
-<figure class="fig flat"><video class="loop" muted loop playsinline autoplay preload="none" width="960" height="530" poster="assets/media/sim_checkpoint_demo.jpg" aria-label="Bagi jalur panjang menjadi checkpoint"><source src="assets/media/sim_checkpoint_demo.mp4" type="video/mp4"></video><figcaption>Bagi jalur panjang menjadi checkpoint</figcaption></figure>
+<figure class="fig"><video class="loop" muted loop playsinline autoplay preload="none" width="960" height="530" poster="assets/media/sim_noodles_demo.jpg" aria-label="Susun langkah: bantu astrokadet memasak mi"><source src="assets/media/sim_noodles_demo.mp4" type="video/mp4"></video><figcaption>Susun langkah: bantu astrokadet memasak mi</figcaption></figure>
+<figure class="fig"><video class="loop" muted loop playsinline autoplay preload="none" width="960" height="530" poster="assets/media/sim_path_demo.jpg" aria-label="Susun program: antar Bot Mars sampai ke bendera"><source src="assets/media/sim_path_demo.mp4" type="video/mp4"></video><figcaption>Susun program: antar Bot Mars sampai ke bendera</figcaption></figure>
+<figure class="fig"><video class="loop" muted loop playsinline autoplay preload="none" width="960" height="530" poster="assets/media/sim_checkpoint_demo.jpg" aria-label="Bagi jalur panjang menjadi checkpoint"><source src="assets/media/sim_checkpoint_demo.mp4" type="video/mp4"></video><figcaption>Bagi jalur panjang menjadi checkpoint</figcaption></figure>
+</div></div></details>
+<details class="acc" id="more-discord"><summary><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"></path></svg></span><span class="sm"><b>Pertanyaan di Discord</b><span>Moderator menjawab lebih dulu, tutor membantu tugas yang sulit</span></span><span class="act"><span class="o1">Lihat</span><span class="o2">Tutup</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></summary><div class="acc-body"><div class="dc"><p class="muted">Moderator menjawab lebih dulu, pukul 15:00–20:00 WIB. Kalau tugasnya sulit, tutor ikut membantu dan menjelaskan.</p>
+<figure class="fig"><video class="loop" muted loop playsinline autoplay preload="none" width="960" height="646" poster="assets/media/discord_2_tanya-tugas.jpg" aria-label="Contoh obrolan di Discord"><source src="assets/media/discord_2_tanya-tugas.mp4" type="video/mp4"></video><figcaption>Contoh obrolan di Discord</figcaption></figure></div></div></details>
 </div>
-</div>
-<div class="panel dc">
-<div class="panel-head"><span class="ico" style="background:var(--primary-subtle)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"></path></svg></span><h3>Pertanyaan diajukan di Discord</h3><p class="muted">Moderator menjawab lebih dulu, pukul 15:00–20:00 WIB. Kalau tugasnya sulit, tutor ikut membantu dan menjelaskan.</p></div>
-<figure class="fig flat"><video class="loop" muted loop playsinline autoplay preload="none" width="960" height="646" poster="assets/media/discord_2_tanya-tugas.jpg" aria-label="Contoh obrolan di Discord"><source src="assets/media/discord_2_tanya-tugas.mp4" type="video/mp4"></video><figcaption>Contoh obrolan di Discord</figcaption></figure>
+<div class="callouts">
+<div class="callout warn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="11" rx="1"></rect><path d="M2 19h20"></path></svg><div class="stack" style="gap:4px"><b>Perlu komputer atau laptop</b><span>Scratch tidak bisa dijalankan di ponsel. Mohon pastikan ini sebelum kursus dimulai.</span></div></div>
+<div class="callout role"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M8 12.5l2.5 2.5L16 9.5"></path></svg><div class="stack" style="gap:4px"><b>Peran orang tua</b><span>Bantu anak menjaga ritme belajar yang teratur. Kami mendukung Anda dengan pengingat dan laporan.</span></div></div>
 </div>
 </div></section>
-<section id="reports" class="sec"><div class="wrap rep">
+<section id="reports" class="sec bg-canvas"><div class="wrap rep">
 <div class="stack" style="gap:24px">
 <div class="head"><span class="eyebrow">Laporan untuk orang tua</span><h2>Anda melihat perkembangan setiap minggu</h2></div>
 <div class="rep-items">
@@ -347,20 +385,6 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 <div class="rep-media">
 <figure class="fig"><video class="loop" muted loop playsinline autoplay preload="none" width="480" height="984" poster="assets/media/whatsapp_weekly_and_pdf.jpg" aria-label="Pesan mingguan dan laporan PDF di WhatsApp"><source src="assets/media/whatsapp_weekly_and_pdf.mp4" type="video/mp4"></video><figcaption>Pesan mingguan dan laporan PDF di WhatsApp</figcaption></figure>
 <figure class="fig"><a class="zoom" href="assets/media/pdf_cycle_report.jpg" target="_blank" rel="noopener" aria-label="Contoh laporan siklus — Buka ukuran penuh"><img src="assets/media/pdf_cycle_report.jpg" alt="Contoh laporan siklus" width="777" height="1100" loading="lazy"></a><figcaption>Contoh laporan siklus</figcaption></figure>
-</div>
-</div></section>
-<section id="how" class="sec bg-canvas"><div class="wrap stack" style="gap:40px">
-<div class="head"><span class="eyebrow">Cara kerjanya</span><h2>Belajar di rumah sesuai ritme sendiri.<br>Bantuan di chat setiap hari.<br>Pertemuan live setiap 3 minggu.</h2></div>
-<div class="steps">
-<article class="step"><span class="n">0</span><span class="e">Setelah pembayaran</span><h3>Pertemuan perkenalan dan orientasi</h3><p>Anak berkenalan dengan tutor dan grup, lalu mengerjakan tugas orientasi pertama di platform belajar.</p></article>
-<article class="step"><span class="n">1</span><span class="e">Setiap minggu</span><h3>Di rumah: satu pelajaran</h3><p>3–5 bagian singkat 15–20 menit: video, kuis, simulator, tugas Scratch. Pertanyaan diajukan di Discord.</p></article>
-<article class="step on-primary"><span class="n">2</span><span class="e">Setiap 3 minggu</span><h3>Pertemuan live</h3><p>90 menit bersama tutor dalam grup 4 anak: tunjukkan proyek, perbaiki bug, tantangan grup.</p><a class="link" href="meetings/">Lihat semua 12 pertemuan<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></article>
-<article class="step"><span class="n">3</span><span class="e">Setiap minggu · setiap 3 minggu</span><h3>Laporan</h3><p>Setiap minggu: apa yang sudah dikerjakan anak dan apa selanjutnya. Setiap 3 minggu: laporan PDF berisi proyek dan komentar tutor.</p></article>
-</div>
-<p class="total"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg><span>Langkah 1–3 diulang <b>12 kali</b> selama kursus</span></p>
-<div class="callouts">
-<div class="callout warn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="11" rx="1"></rect><path d="M2 19h20"></path></svg><div class="stack" style="gap:4px"><b>Perlu komputer atau laptop</b><span>Scratch tidak bisa dijalankan di ponsel. Mohon pastikan ini sebelum kursus dimulai.</span></div></div>
-<div class="callout role"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M8 12.5l2.5 2.5L16 9.5"></path></svg><div class="stack" style="gap:4px"><b>Peran orang tua</b><span>Bantu anak menjaga ritme belajar yang teratur. Kami mendukung Anda dengan pengingat dan laporan.</span></div></div>
 </div>
 </div></section>
 <section id="compare" class="sec"><div class="wrap stack" style="gap:32px">
@@ -380,10 +404,6 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 </tbody></table></div>
 <p class="muted"><strong>Paling cocok untuk</strong> keluarga yang sibuk, anak yang suka belajar sesuai ritmenya sendiri, dan orang tua yang ingin melihat perkembangan setiap minggu.</p>
 </div></section>
-<section id="kevin" class="sec bg-canvas"><div class="wrap kev">
-<div class="head"><span class="eyebrow">Kenalan dengan guru</span><h2>Kevin menjelaskan format fleksibel dalam 50 detik</h2><p class="lead">Kevin adalah guru Pemrograman Visual di Algonova dan merekam video pelajarannya.</p></div>
-<figure class="fig"><video controls playsinline preload="none" width="1280" height="720" poster="assets/media/kevin_welcome.jpg"><source src="assets/media/kevin_welcome.mp4" type="video/mp4"></video><figcaption>Kevin, guru Pemrograman Visual · 50 detik</figcaption></figure>
-</div></section>
 <section class="sec" style="padding-bottom:0"><div class="wrap">
 <div class="box canvas"><div class="txt"><span class="eyebrow">Tentang kursus</span><h2>Ingin melihat lagi apa yang dipelajari anak?</h2><p class="muted">Lihat program Pemrograman Visual: topik, modul, dan proyek yang dibuat anak.</p></div>
 <a class="btn btn-secondary" href="https://test.algonova.id/sales/new/curriculum/visual-coding?fb_pixel_id=1152940395642591" target="_blank" rel="noopener">Kursus Pemrograman Visual<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
@@ -395,6 +415,11 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 </main>
 <footer class="foot"><div class="wrap"><img src="assets/logo-white.svg" alt="Algonova" width="120" height="32"><span>Sekolah IT online internasional untuk anak dan remaja usia 5–17 tahun</span><a href="https://algonova.com/">algonova.com</a></div></footer>
 <script>
+(function(){
+  function openFrom(hash){if(!hash||hash.indexOf('#more-')!==0)return;var d=document.querySelector(hash);if(d&&d.tagName==='DETAILS')d.open=true;}
+  [].slice.call(document.querySelectorAll('a[href^="#more-"]')).forEach(function(a){a.addEventListener('click',function(){openFrom(a.getAttribute('href'));});});
+  openFrom(location.hash);
+})();
 (function(){
   var vids=[].slice.call(document.querySelectorAll('video.loop'));
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;

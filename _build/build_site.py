@@ -128,8 +128,19 @@ T = {
     "best": ("<strong>Best for</strong> busy families, kids who like their own pace, and parents who want to see progress every week.",
              "<strong>Paling cocok untuk</strong> keluarga yang sibuk, anak yang suka belajar sesuai ritmenya sendiri, dan orang tua yang ingin melihat perkembangan setiap minggu."),
     # kevin
-    "k_eyebrow": ("Meet the teacher", "Kenalan dengan guru"),
-    "k_h2": ("Kevin explains the flexible format in 50 seconds", "Kevin menjelaskan format fleksibel dalam 50 detik"),
+    "k_h2": ("Tutor explains the flexible format in 50 seconds", "Tutor menjelaskan format fleksibel dalam 50 detik"),
+    # expandable details
+    "more_h3": ("See how it works", "Lihat cara kerjanya"),
+    "acc_lesson_t": ("Inside a lesson", "Isi satu pelajaran"),
+    "acc_lesson_d": ("3–5 short parts: video, quiz, simulator, Scratch tasks", "3–5 bagian singkat: video, kuis, simulator, tugas Scratch"),
+    "acc_sim_d": ("Our main new feature: a puzzle before the code", "Fitur baru utama: teka-teki sebelum kode"),
+    "acc_dc_t": ("Questions in Discord", "Pertanyaan di Discord"),
+    "acc_dc_d": ("A moderator answers first, tutors help with harder tasks", "Moderator menjawab lebih dulu, tutor membantu tugas yang sulit"),
+    "show": ("Show", "Lihat"),
+    "hide": ("Hide", "Tutup"),
+    "see_lesson": ("See inside a lesson", "Lihat isi pelajaran"),
+    "see_sim": ("See the simulators", "Lihat simulatornya"),
+    "see_example": ("See an example", "Lihat contoh"),
     "k_d": ("Kevin teaches Visual Programming at Algonova and records the video lessons.",
             "Kevin adalah guru Pemrograman Visual di Algonova dan merekam video pelajarannya."),
     "k_note": ("The video is in Bahasa Indonesia.", ""),
@@ -371,13 +382,32 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .rep{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center}
 .rep-items{display:flex;flex-direction:column;gap:16px}
 .rep-item{background:var(--canvas);border-radius:var(--radius-lg);padding:24px;display:flex;gap:16px;align-items:flex-start}
+.bg-canvas .rep-item{background:var(--card);box-shadow:var(--shadow-e2)}
 .rep-item p{color:var(--muted-foreground)}
 .rep-media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
-.rep-media .fig{background:var(--canvas);box-shadow:none}
 
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.step{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-e2);padding:24px;display:flex;flex-direction:column;gap:8px}
+.step{background:var(--canvas);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:8px}
+.bg-canvas .step{background:var(--card);box-shadow:var(--shadow-e2)}
+
+/* expandable details */
+.more{display:flex;flex-direction:column;gap:12px}
+.acc{background:var(--canvas);border-radius:var(--radius-lg);scroll-margin-top:16px}
+.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:16px 20px;min-height:80px;border-radius:var(--radius-lg);transition:background var(--dur) var(--ease)}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary:hover{background:var(--surface-hover)}
+.acc summary:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.acc[open] summary{border-radius:var(--radius-lg) var(--radius-lg) 0 0}
+.acc .sm{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+.acc .sm b{font-size:20px;line-height:1.3;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.acc .sm span{color:var(--muted-foreground)}
+.acc .act{display:inline-flex;align-items:center;gap:8px;color:var(--primary);font-weight:600;flex:none}
+.acc .act svg{transition:transform var(--dur) var(--ease)}
+.acc[open] .act svg{transform:rotate(90deg)}
+.acc .o2,.acc[open] .o1{display:none}
+.acc[open] .o2{display:inline}
+.acc-body{padding:8px 20px 24px;display:flex;flex-direction:column;gap:20px}
 .step .n{width:40px;height:40px;border-radius:var(--radius-pill);background:var(--primary);color:var(--primary-foreground);display:inline-flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:8px}
 .step .e{font-size:12px;line-height:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--primary)}
 .step p{color:var(--muted-foreground)}
@@ -486,6 +516,9 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
   .box{padding:28px 20px}
   .box .btn{flex:1 1 100%}
   .rep-media{gap:12px}
+  .acc summary{padding:16px;gap:12px}
+  .acc .act .o1,.acc[open] .act .o2{display:none}
+  .acc-body{padding:4px 12px 16px}
   .rep-item{padding:20px}
   /* comparison: fits the phone width, no sideways scroll */
   .cmp .l{display:none}
@@ -509,6 +542,11 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 """
 
 JS = r"""
+(function(){
+  function openFrom(hash){if(!hash||hash.indexOf('#more-')!==0)return;var d=document.querySelector(hash);if(d&&d.tagName==='DETAILS')d.open=true;}
+  [].slice.call(document.querySelectorAll('a[href^="#more-"]')).forEach(function(a){a.addEventListener('click',function(){openFrom(a.getAttribute('href'));});});
+  openFrom(location.hash);
+})();
 (function(){
   var vids=[].slice.call(document.querySelectorAll('video.loop'));
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -608,24 +646,41 @@ def landing(lang):
 <main>
 """)
 
+    # KEVIN (second screen)
+    note = f'<p class="small muted">{t("k_note")}</p>' if t("k_note") else ""
+    out.append(f"""<section id="kevin" class="sec"><div class="wrap kev">
+<div class="head"><h2>{t("k_h2")}</h2><p class="lead">{t("k_d")}</p>{note}</div>
+<figure class="fig"><video controls playsinline preload="none" width="1280" height="720" poster="{prefix}assets/media/kevin_welcome.jpg"><source src="{prefix}assets/media/kevin_welcome.mp4" type="video/mp4"></video><figcaption>{t("cap_kevin")}</figcaption></figure>
+</div></section>
+""")
+
     # INCLUDED
-    out.append(f"""<section id="included" class="sec"><div class="wrap stack" style="gap:40px">
+    arrow = I["arrow"](20)
+    out.append(f"""<section id="included" class="sec bg-canvas"><div class="wrap stack" style="gap:40px">
 <div class="head"><span class="eyebrow">{t("inc_eyebrow")}</span><h2>{t("inc_h2")}</h2></div>
 <div class="grid3">
-<article class="card"><span class="ico">{I["play"]()}</span><h3>{t("c1t")}</h3><p>{t("c1d")}</p></article>
-<article class="card on-primary"><span class="ico">{I["screen"]()}</span><h3>{t("c2t")}</h3><p>{t("c2d")}</p><a class="link" href="{meetings}">{t("all12")}{I["arrow"](20)}</a></article>
-<article class="card"><div class="card-top"><span class="ico">{I["puzzle"]()}</span><span class="badge">{t("new")}</span></div><h3>{t("c3t")}</h3><p>{t("c3d")}</p></article>
-<article class="card"><span class="ico">{I["chat"]()}</span><h3>{t("c4t")}</h3><p>{t("c4d")}</p></article>
-<article class="card"><span class="ico">{I["doc"]()}</span><h3>{t("c5t")}</h3><p>{t("c5d")}</p></article>
+<article class="card"><span class="ico">{I["play"]()}</span><h3>{t("c1t")}</h3><p>{t("c1d")}</p><a class="link" href="#more-lesson">{t("see_lesson")}{arrow}</a></article>
+<article class="card on-primary"><span class="ico">{I["screen"]()}</span><h3>{t("c2t")}</h3><p>{t("c2d")}</p><a class="link" href="{meetings}">{t("all12")}{arrow}</a></article>
+<article class="card"><div class="card-top"><span class="ico">{I["puzzle"]()}</span><span class="badge">{t("new")}</span></div><h3>{t("c3t")}</h3><p>{t("c3d")}</p><a class="link" href="#more-sim">{t("see_sim")}{arrow}</a></article>
+<article class="card"><span class="ico">{I["chat"]()}</span><h3>{t("c4t")}</h3><p>{t("c4d")}</p><a class="link" href="#more-discord">{t("see_example")}{arrow}</a></article>
+<article class="card"><span class="ico">{I["doc"]()}</span><h3>{t("c5t")}</h3><p>{t("c5d")}</p><a class="link" href="#reports">{t("see_example")}{arrow}</a></article>
 <article class="card"><span class="ico">{I["trophy"]()}</span><h3>{t("c6t")}</h3><p>{t("c6d")}</p></article>
 </div>
 <p class="total">{I["cal"](20)}<span>{t("inc_total")}</span></p>
 </div></section>
 """)
 
-    # LESSON
-    out.append(f"""<section id="lesson" class="sec bg-canvas"><div class="wrap stack" style="gap:40px">
-<div class="head"><span class="eyebrow">{t("l_eyebrow")}</span><h2>{t("l_h2")}</h2><p class="lead">{t("l_lead")}</p></div>
+    # HOW IT WORKS + expandable details
+    chev = I["arrow"](20)
+
+    def acc(id_, icon, title, desc, body, badge=""):
+        b = f' <span class="badge">{t("new")}</span>' if badge else ""
+        return (f'<details class="acc" id="{id_}"><summary><span class="ico">{icon}</span>'
+                f'<span class="sm"><b>{title}{b}</b><span>{desc}</span></span>'
+                f'<span class="act"><span class="o1">{t("show")}</span><span class="o2">{t("hide")}</span>{chev}</span></summary>'
+                f'<div class="acc-body">{body}</div></details>')
+
+    lesson_body = f"""<p class="muted">{t("l_lead")}</p>
 <div class="parts">
 <div class="part"><span class="ico">{I["play"](20)}</span><h3>{t("p1t")}</h3><p>{t("p1d")}</p></div>
 <div class="part"><span class="ico">{I["quiz"](20)}</span><h3>{t("p2t")}</h3><p>{t("p2d")}</p></div>
@@ -636,23 +691,40 @@ def landing(lang):
 <figure class="fig"><video controls playsinline preload="none" width="1280" height="720" poster="{prefix}assets/media/kevin_lesson.jpg"><source src="{prefix}assets/media/kevin_lesson.mp4" type="video/mp4"></video><figcaption>{t("cap_lesson")}</figcaption></figure>
 <figure class="fig"><a class="zoom" href="{prefix}assets/media/course_map.jpg" target="_blank" rel="noopener" aria-label="{t("cap_map")} — {t("open_full")}"><img src="{prefix}assets/media/course_map.jpg" alt="{t("cap_map")}" width="1600" height="1375" loading="lazy"></a><figcaption>{t("cap_map")}</figcaption></figure>
 </div>
-<div class="panel">
-<div class="panel-head"><div class="row"><span class="badge">{t("new")}</span></div><h3>{t("sim_h3")}</h3><p class="muted">{t("sim_d")}</p></div>
+"""
+    sim_body = f"""<p class="muted">{t("sim_d")}</p>
 <div class="grid3">
-<figure class="fig flat">{loop(prefix, "sim_noodles_demo", t("sim1"), 960, 530)}<figcaption>{t("sim1")}</figcaption></figure>
-<figure class="fig flat">{loop(prefix, "sim_path_demo", t("sim2"), 960, 530)}<figcaption>{t("sim2")}</figcaption></figure>
-<figure class="fig flat">{loop(prefix, "sim_checkpoint_demo", t("sim3"), 960, 530)}<figcaption>{t("sim3")}</figcaption></figure>
+<figure class="fig">{loop(prefix, "sim_noodles_demo", t("sim1"), 960, 530)}<figcaption>{t("sim1")}</figcaption></figure>
+<figure class="fig">{loop(prefix, "sim_path_demo", t("sim2"), 960, 530)}<figcaption>{t("sim2")}</figcaption></figure>
+<figure class="fig">{loop(prefix, "sim_checkpoint_demo", t("sim3"), 960, 530)}<figcaption>{t("sim3")}</figcaption></figure>
+</div>"""
+    dc_body = f"""<div class="dc"><p class="muted">{t("dc_d")}</p>
+<figure class="fig">{loop(prefix, "discord_2_tanya-tugas", t("cap_dc"), 960, 646)}<figcaption>{t("cap_dc")}</figcaption></figure></div>"""
+
+    out.append(f"""<section id="how" class="sec"><div class="wrap stack" style="gap:40px">
+<div class="head"><span class="eyebrow">{t("hw_eyebrow")}</span><h2>{t("hw_h2")}</h2></div>
+<div class="steps">
+<article class="step"><span class="n">0</span><span class="e">{t("s0e")}</span><h3>{t("s0t")}</h3><p>{t("s0d")}</p></article>
+<article class="step"><span class="n">1</span><span class="e">{t("s1e")}</span><h3>{t("s1t")}</h3><p>{t("s1d")}</p><a class="link" href="#more-lesson">{t("see_lesson")}{arrow}</a></article>
+<article class="step on-primary"><span class="n">2</span><span class="e">{t("s2e")}</span><h3>{t("s2t")}</h3><p>{t("s2d")}</p><a class="link" href="{meetings}">{t("all12")}{arrow}</a></article>
+<article class="step"><span class="n">3</span><span class="e">{t("s3e")}</span><h3>{t("s3t")}</h3><p>{t("s3d")}</p><a class="link" href="#reports">{t("see_example")}{arrow}</a></article>
 </div>
+<p class="total">{I["cal"](20)}<span>{t("repeat")}</span></p>
+<div class="more">
+<h3>{t("more_h3")}</h3>
+{acc("more-lesson", I["play"](), t("acc_lesson_t"), t("acc_lesson_d"), lesson_body)}
+{acc("more-sim", I["puzzle"](), t("c3t"), t("acc_sim_d"), sim_body, badge=True)}
+{acc("more-discord", I["chat"](), t("acc_dc_t"), t("acc_dc_d"), dc_body)}
 </div>
-<div class="panel dc">
-<div class="panel-head"><span class="ico" style="background:var(--primary-subtle)">{I["chat"]()}</span><h3>{t("dc_h3")}</h3><p class="muted">{t("dc_d")}</p></div>
-<figure class="fig flat">{loop(prefix, "discord_2_tanya-tugas", t("cap_dc"), 960, 646)}<figcaption>{t("cap_dc")}</figcaption></figure>
+<div class="callouts">
+<div class="callout warn">{I["laptop"]()}<div class="stack" style="gap:4px"><b>{t("pc_t")}</b><span>{t("pc_d")}</span></div></div>
+<div class="callout role">{I["check"]()}<div class="stack" style="gap:4px"><b>{t("role_t")}</b><span>{t("role_d")}</span></div></div>
 </div>
 </div></section>
 """)
 
     # REPORTS
-    out.append(f"""<section id="reports" class="sec"><div class="wrap rep">
+    out.append(f"""<section id="reports" class="sec bg-canvas"><div class="wrap rep">
 <div class="stack" style="gap:24px">
 <div class="head"><span class="eyebrow">{t("r_eyebrow")}</span><h2>{t("r_h2")}</h2></div>
 <div class="rep-items">
@@ -663,23 +735,6 @@ def landing(lang):
 <div class="rep-media">
 <figure class="fig">{loop(prefix, "whatsapp_weekly_and_pdf", t("cap_wa"), 480, 984)}<figcaption>{t("cap_wa")}</figcaption></figure>
 <figure class="fig"><a class="zoom" href="{prefix}assets/media/pdf_cycle_report.jpg" target="_blank" rel="noopener" aria-label="{t("cap_pdf")} — {t("open_full")}"><img src="{prefix}assets/media/pdf_cycle_report.jpg" alt="{t("cap_pdf")}" width="777" height="1100" loading="lazy"></a><figcaption>{t("cap_pdf")}</figcaption></figure>
-</div>
-</div></section>
-""")
-
-    # HOW IT WORKS
-    out.append(f"""<section id="how" class="sec bg-canvas"><div class="wrap stack" style="gap:40px">
-<div class="head"><span class="eyebrow">{t("hw_eyebrow")}</span><h2>{t("hw_h2")}</h2></div>
-<div class="steps">
-<article class="step"><span class="n">0</span><span class="e">{t("s0e")}</span><h3>{t("s0t")}</h3><p>{t("s0d")}</p></article>
-<article class="step"><span class="n">1</span><span class="e">{t("s1e")}</span><h3>{t("s1t")}</h3><p>{t("s1d")}</p></article>
-<article class="step on-primary"><span class="n">2</span><span class="e">{t("s2e")}</span><h3>{t("s2t")}</h3><p>{t("s2d")}</p><a class="link" href="{meetings}">{t("all12")}{I["arrow"](20)}</a></article>
-<article class="step"><span class="n">3</span><span class="e">{t("s3e")}</span><h3>{t("s3t")}</h3><p>{t("s3d")}</p></article>
-</div>
-<p class="total">{I["cal"](20)}<span>{t("repeat")}</span></p>
-<div class="callouts">
-<div class="callout warn">{I["laptop"]()}<div class="stack" style="gap:4px"><b>{t("pc_t")}</b><span>{t("pc_d")}</span></div></div>
-<div class="callout role">{I["check"]()}<div class="stack" style="gap:4px"><b>{t("role_t")}</b><span>{t("role_d")}</span></div></div>
 </div>
 </div></section>
 """)
@@ -702,14 +757,6 @@ def landing(lang):
 {chr(10).join(rows)}
 </tbody></table></div>
 <p class="muted">{t("best")}</p>
-</div></section>
-""")
-
-    # KEVIN
-    note = f'<p class="small muted">{t("k_note")}</p>' if t("k_note") else ""
-    out.append(f"""<section id="kevin" class="sec bg-canvas"><div class="wrap kev">
-<div class="head"><span class="eyebrow">{t("k_eyebrow")}</span><h2>{t("k_h2")}</h2><p class="lead">{t("k_d")}</p>{note}</div>
-<figure class="fig"><video controls playsinline preload="none" width="1280" height="720" poster="{prefix}assets/media/kevin_welcome.jpg"><source src="{prefix}assets/media/kevin_welcome.mp4" type="video/mp4"></video><figcaption>{t("cap_kevin")}</figcaption></figure>
 </div></section>
 """)
 
