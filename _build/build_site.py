@@ -660,7 +660,7 @@ def landing(lang):
     # INCLUDED
     arrow = I["arrow"](20)
     out.append(f"""<section id="included" class="sec bg-canvas"><div class="wrap stack" style="gap:40px">
-<div class="head"><span class="eyebrow">{t("inc_eyebrow")}</span><h2>{t("inc_h2")}</h2></div>
+<div class="head"><h2>{t("inc_h2")}</h2></div>
 <div class="grid3">
 <article class="card"><span class="ico">{I["play"]()}</span><h3>{t("c1t")}</h3><p>{t("c1d")}</p><a class="link" href="#more-lesson">{t("see_lesson")}{arrow}</a></article>
 <article class="card on-primary"><span class="ico">{I["screen"]()}</span><h3>{t("c2t")}</h3><p>{t("c2d")}</p><a class="link" href="{meetings}">{t("all12")}{arrow}</a></article>
@@ -705,7 +705,7 @@ def landing(lang):
 <figure class="fig">{loop(prefix, "discord_2_tanya-tugas", t("cap_dc"), 960, 646)}<figcaption>{t("cap_dc")}</figcaption></figure></div>"""
 
     out.append(f"""<section id="how" class="sec"><div class="wrap stack" style="gap:40px">
-<div class="head"><span class="eyebrow">{t("hw_eyebrow")}</span><h2>{t("hw_h2")}</h2></div>
+<div class="head"><h2>{t("hw_h2")}</h2></div>
 <div class="steps">
 <article class="step"><span class="n">0</span><span class="e">{t("s0e")}</span><h3>{t("s0t")}</h3><p>{t("s0d")}</p></article>
 <article class="step"><span class="n">1</span><span class="e">{t("s1e")}</span><h3>{t("s1t")}</h3><p>{t("s1d")}</p><a class="link" href="#more-lesson">{t("see_lesson")}{arrow}</a></article>
@@ -729,7 +729,7 @@ def landing(lang):
     # REPORTS
     out.append(f"""<section id="reports" class="sec bg-canvas"><div class="wrap rep">
 <div class="stack" style="gap:24px">
-<div class="head"><span class="eyebrow">{t("r_eyebrow")}</span><h2>{t("r_h2")}</h2></div>
+<div class="head"><h2>{t("r_h2")}</h2></div>
 <div class="rep-items">
 <div class="rep-item"><span class="ico">{I["chat"]()}</span><div class="stack" style="gap:4px"><h3>{t("r1t")}</h3><p>{t("r1d")}</p></div></div>
 <div class="rep-item"><span class="ico">{I["doc"]()}</span><div class="stack" style="gap:4px"><h3>{t("r2t")}</h3><p>{t("r2d")}</p></div></div>
@@ -754,7 +754,7 @@ def landing(lang):
                     f'<td class="reg"><span class="l">{rl}</span><span class="s">{rs}</span></td>'
                     f'<td class="{cls}">{ok}<span class="l">{fl}</span><span class="s">{fs}</span></td></tr>')
     out.append(f"""<section id="compare" class="sec"><div class="wrap stack" style="gap:32px">
-<div class="head"><span class="eyebrow">{t("cmp_eyebrow")}</span><h2>{t("cmp_h2")}</h2></div>
+<div class="head"><h2>{t("cmp_h2")}</h2></div>
 <div class="cmp"><table>
 <thead><tr><th scope="col"><span class="sr">{t("cmp_feature")}</span></th><th scope="col"><span class="l">{t("cmp_reg")}</span><span class="s">{t("cmp_reg_s")}</span></th><th scope="col" class="flex"><span class="l">{t("cmp_flex")}</span><span class="s">{t("cmp_flex_s")}</span></th></tr></thead>
 <tbody>
@@ -766,7 +766,7 @@ def landing(lang):
 
     # COURSE + CTA
     out.append(f"""<section class="sec" style="padding-bottom:0"><div class="wrap">
-<div class="box canvas"><div class="txt"><span class="eyebrow">{t("about_eyebrow")}</span><h2>{t("about_h2")}</h2><p class="muted">{t("about_d")}</p></div>
+<div class="box canvas"><div class="txt"><h2>{t("about_h2")}</h2><p class="muted">{t("about_d")}</p></div>
 <a class="btn btn-secondary" href="{CURRICULUM}" target="_blank" rel="noopener">{t("about_btn")}{I["arrow"](20)}</a></div>
 </div></section>
 <section id="buy" class="sec"><div class="wrap">
