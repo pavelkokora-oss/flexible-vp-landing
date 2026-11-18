@@ -130,7 +130,7 @@ T = {
     # kevin
     "k_h2": ("Tutor explains the flexible format in 50 seconds", "Tutor menjelaskan format fleksibel dalam 50 detik"),
     # expandable details
-    "more_h3": ("See how it works", "Lihat cara kerjanya"),
+    "more_h3": ("See how it works <span class=\"muted\" style=\"font-weight:400\">(click to expand)</span>", "Lihat cara kerjanya <span class=\"muted\" style=\"font-weight:400\">(klik untuk membuka)</span>"),
     "acc_lesson_t": ("Inside a lesson", "Isi satu pelajaran"),
     "acc_lesson_d": ("3–5 short parts: video, quiz, simulator, Scratch tasks", "3–5 bagian singkat: video, kuis, simulator, tugas Scratch"),
     "acc_sim_d": ("Our main new feature: a puzzle before the code", "Fitur baru utama: teka-teki sebelum kode"),
