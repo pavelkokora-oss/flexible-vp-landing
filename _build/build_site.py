@@ -685,8 +685,9 @@ def landing(lang, variant="main"):
         items = [("ID", root, "id"), ("EN", root + "en/", "en"),
                  ("TEST", None if variant == "test" else "../test/", None),
                  ("TEST 2", None if variant == "test2" else "../test2/", None)]
+    line_a = "" if variant == "test" else f'<img class="ln ln-a" src="{prefix}assets/lines/violet.svg" alt="" aria-hidden="true">'
     if variant == "test":
-        visual = (f'<figure class="hero-visual hero-photo"><img src="{prefix}assets/hero/kids_laptop.jpg" alt="" width="678" height="814">'
+        visual = (f'<figure class="hero-visual hero-photo"><img src="{prefix}assets/hero/kids_laptop.jpg" alt="" width="538" height="611">'
                   f'<img class="sticker" src="{prefix}assets/sticker-scratch.svg" alt="" aria-hidden="true"></figure>')
     elif variant == "test2":
         visual = (f'<figure class="hero-visual hero-book"><img src="{prefix}assets/hero/book_visual_coding.webp" alt="Visual Coding · 8–11" width="720" height="1046"></figure>')
@@ -696,7 +697,7 @@ def landing(lang, variant="main"):
                   f'<span class="muted">{t("stat_sub")}</span>\n</div>')
 
     # HERO
-    out.append(f"""<header class="hero"><img class="ln ln-a" src="{prefix}assets/lines/violet.svg" alt="" aria-hidden="true"><img class="ln ln-b" src="{prefix}assets/lines/white.svg" alt="" aria-hidden="true"><div class="wrap">
+    out.append(f"""<header class="hero">{line_a}<img class="ln ln-b" src="{prefix}assets/lines/white.svg" alt="" aria-hidden="true"><div class="wrap">
 {nav(t, prefix, "./", items)}
 <div class="hero-grid">
 <div class="hero-copy">
