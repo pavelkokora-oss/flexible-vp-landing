@@ -706,9 +706,9 @@ def landing(lang):
     # HOW IT WORKS + expandable details
     chev = I["arrow"](20)
 
-    def acc(id_, icon, title, desc, body, badge=""):
+    def acc(id_, icon, title, desc, body, badge="", opened=False):
         b = f' <span class="badge">{t("new")}</span>' if badge else ""
-        return (f'<details class="acc" id="{id_}"><summary><span class="ico">{icon}</span>'
+        return (f'<details class="acc" id="{id_}"{" open" if opened else ""}><summary><span class="ico">{icon}</span>'
                 f'<span class="sm"><b>{title}{b}</b><span>{desc}</span></span>'
                 f'<span class="act"><span class="o1">{t("show")}</span><span class="o2">{t("hide")}</span>{chev}</span></summary>'
                 f'<div class="acc-body">{body}</div></details>')
@@ -745,7 +745,7 @@ def landing(lang):
 <p class="total">{I["cal"](20)}<span>{t("repeat")}</span></p>
 <div class="more">
 <h3>{t("more_h3")}</h3>
-{acc("more-lesson", I["play"](), t("acc_lesson_t"), t("acc_lesson_d"), lesson_body)}
+{acc("more-lesson", I["play"](), t("acc_lesson_t"), t("acc_lesson_d"), lesson_body, opened=True)}
 {acc("more-sim", I["puzzle"](), t("c3t"), t("acc_sim_d"), sim_body, badge=True)}
 {acc("more-discord", I["chat"](), t("acc_dc_t"), t("acc_dc_d"), dc_body)}
 </div>
