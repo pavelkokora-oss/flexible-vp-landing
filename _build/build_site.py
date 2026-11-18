@@ -711,14 +711,18 @@ def landing(lang, variant="main"):
         items = [("ID", None if lang == "id" else root, "id"), ("EN", None if lang == "en" else root + "en/", "en"),
                  ("TEST", "test/", None), ("TEST 2", "test2/", None)]
     else:
-        items = [("ID", root, "id"), ("EN", root + "en/", "en"),
+        items = [("ID", None if lang == "id" else f"{root}{variant}/", "id"),
+                 ("EN", None if lang == "en" else f"{root}en/{variant}/", "en"),
                  ("TEST", None if variant == "test" else "../test/", None),
                  ("TEST 2", None if variant == "test2" else "../test2/", None)]
+    home = (root + ("en/" if lang == "en" else "")) if test else "./"
     line_a = "" if variant == "test" else f'<img class="ln ln-a" src="{prefix}assets/lines/violet.svg" alt="" aria-hidden="true">'
     if False:
         visual = ""
     elif variant == "test2":
-        visual = (f'<figure class="hero-visual hero-book"><img src="{prefix}assets/hero/book_visual_coding.webp" alt="Visual Coding · 8–11" width="720" height="1046"></figure>')
+        book_file = "book_visual_coding_id.webp" if lang == "id" else "book_visual_coding.webp"
+        book_alt = "Pemrograman Visual · 8–11 tahun" if lang == "id" else "Visual Coding · 8–11 years"
+        visual = (f'<figure class="hero-visual hero-book"><img src="{prefix}assets/hero/{book_file}" alt="{book_alt}" width="720" height="1046"></figure>')
     else:
         visual = (f'<div class="stat hero-visual">\n<img class="sticker" src="{prefix}assets/sticker-scratch.svg" alt="" aria-hidden="true">\n'
                   f'<span class="muted">{t("stat_label")}</span>\n<div class="num"><b>3×</b><span>{t("stat_word")}</span></div>\n'
@@ -726,7 +730,7 @@ def landing(lang, variant="main"):
 
     # HERO
     out.append(f"""<header class="hero">{line_a}<img class="ln ln-b" src="{prefix}assets/lines/white.svg" alt="" aria-hidden="true"><div class="wrap">
-{nav(t, prefix, "./", items)}
+{nav(t, prefix, home, items)}
 <div class="hero-grid">
 <div class="hero-copy">
 <h1>{t("h1a")}<br><span class="mark">{t("h1b")}</span></h1>
