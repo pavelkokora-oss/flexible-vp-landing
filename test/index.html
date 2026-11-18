@@ -213,6 +213,12 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .kch{display:flex;gap:16px;align-items:flex-start;width:100%;text-align:left;border:0;cursor:pointer;background:var(--canvas);color:var(--foreground);border-radius:var(--radius-lg);padding:16px;font:500 16px/1.4 Inter,system-ui,sans-serif;transition:background var(--dur) var(--ease)}
 .kch:hover{background:var(--surface-hover)}
 .kch[aria-current="true"]{background:var(--primary-subtle)}
+.sec-dark{background:var(--hero);color:var(--on-dark)}
+.sec-dark .muted{color:var(--on-dark-muted)}
+.sec-dark .kev-video{box-shadow:none}
+.sec-dark .kch{background:var(--on-dark-fill);color:var(--on-dark)}
+.sec-dark .kch:hover{background:var(--on-dark-hover)}
+.sec-dark .kch[aria-current="true"]{background:var(--primary)}
 .kch-t{flex:none;min-width:48px;padding:2px 8px;border-radius:var(--radius-pill);background:var(--primary);color:var(--primary-foreground);font-size:12px;line-height:20px;font-weight:700;text-align:center}
 
 /* course + cta */
@@ -357,12 +363,6 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 </div>
 </div></header>
 <main>
-<section id="kevin" class="sec"><div class="wrap stack" style="gap:32px">
-<h2 style="text-align:center">Tutor menjelaskan format fleksibel dalam 50 detik</h2>
-<div class="kev2"><video class="kev-video" id="kev-video" controls playsinline preload="none" width="1280" height="720" poster="../assets/media/kevin_welcome.jpg" aria-label="Kevin, guru Pemrograman Visual · 50 detik"><source src="../assets/media/kevin_welcome.mp4" type="video/mp4"></video>
-<div class="kev2-side"><h3>Di dalam video</h3><ol class="kchs"><li><button type="button" class="kch" data-t="6"><span class="kch-t tnum">0:06</span><span>Dari perintah sederhana pertama hingga proyek sendiri</span></button></li><li><button type="button" class="kch" data-t="15"><span class="kch-t tnum">0:15</span><span>Setiap minggu: pelajaran singkat — video dari Kevin dan latihan interaktif di platform</span></button></li><li><button type="button" class="kch" data-t="25"><span class="kch-t tnum">0:25</span><span>Anak belajar kapan saja, sesuai kecepatannya sendiri</span></button></li><li><button type="button" class="kch" data-t="33"><span class="kch-t tnum">0:33</span><span>Setiap 3 minggu grup bertemu tutor untuk mengerjakan proyek bersama</span></button></li></ol><p class="small muted">Ketuk poin untuk langsung ke bagian itu di video</p></div>
-</div>
-</div></section>
 <section id="included" class="sec bg-canvas"><div class="wrap stack" style="gap:40px">
 <div class="head"><h2>Semua yang dibutuhkan anak untuk belajar coding</h2><p class="lead">36 pelajaran + 12 pertemuan live selama 36 minggu</p></div>
 <div class="grid3">
@@ -372,6 +372,12 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 <article class="card"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"></path></svg></span><h3>Bantuan chat setiap hari</h3><p>Di Discord, pukul 12:00–20:00 WIB. Moderator menjawab lebih dulu, tutor membantu pertanyaan yang lebih sulit.</p><a class="link" href="#more-discord">Lihat contoh<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></article>
 <article class="card"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h6"></path></svg></span><h3>Laporan untuk orang tua</h3><p>Pesan WhatsApp singkat setiap minggu dan laporan PDF setiap 3 minggu.</p><a class="link" href="#reports">Lihat contoh<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></article>
 <article class="card"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 4h8v5a4 4 0 0 1-8 0V4zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"></path></svg></span><h3>Sertifikat</h3><p>36 topik yang sama dengan kursus reguler. Sertifikat diberikan di akhir kursus.</p></article>
+</div>
+</div></section>
+<section id="kevin" class="sec sec-dark"><div class="wrap stack" style="gap:32px">
+<h2 style="text-align:center">Ingin tahu lebih banyak? Tutor utama kami, Kevin, menjelaskan dasarnya dalam 50 detik</h2>
+<div class="kev2"><video class="kev-video" id="kev-video" controls playsinline preload="none" width="1280" height="720" poster="../assets/media/kevin_welcome.jpg" aria-label="Kevin, guru Pemrograman Visual · 50 detik"><source src="../assets/media/kevin_welcome.mp4" type="video/mp4"></video>
+<div class="kev2-side"><h3>Di dalam video</h3><ol class="kchs"><li><button type="button" class="kch" data-t="6"><span class="kch-t tnum">0:06</span><span>Dari perintah sederhana pertama hingga proyek sendiri</span></button></li><li><button type="button" class="kch" data-t="15"><span class="kch-t tnum">0:15</span><span>Setiap minggu: pelajaran singkat — video dari Kevin dan latihan interaktif di platform</span></button></li><li><button type="button" class="kch" data-t="25"><span class="kch-t tnum">0:25</span><span>Anak belajar kapan saja, sesuai kecepatannya sendiri</span></button></li><li><button type="button" class="kch" data-t="33"><span class="kch-t tnum">0:33</span><span>Setiap 3 minggu grup bertemu tutor untuk mengerjakan proyek bersama</span></button></li></ol><p class="small muted">Ketuk poin untuk langsung ke bagian itu di video</p></div>
 </div>
 </div></section>
 <section id="how" class="sec"><div class="wrap stack" style="gap:40px">

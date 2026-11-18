@@ -130,7 +130,7 @@ T = {
     "best": ("<strong>Best for</strong> busy families, kids who like their own pace, and parents who want to see progress every week.",
              "<strong>Paling cocok untuk</strong> keluarga yang sibuk, anak yang suka belajar sesuai ritmenya sendiri, dan orang tua yang ingin melihat perkembangan setiap minggu."),
     # kevin
-    "k_h2": ("Tutor explains the flexible format in 50 seconds", "Tutor menjelaskan format fleksibel dalam 50 detik"),
+    "k_h2": ("Want to know more? Our lead tutor Kevin explains the basics in 50 seconds", "Ingin tahu lebih banyak? Tutor utama kami, Kevin, menjelaskan dasarnya dalam 50 detik"),
     "kch_h": ("In the video", "Di dalam video"),
     "kch1": ("From the first simple commands to their own projects", "Dari perintah sederhana pertama hingga proyek sendiri"),
     "kch2": ("Every week: a short lesson — Kevin's video and interactive exercises on the platform", "Setiap minggu: pelajaran singkat — video dari Kevin dan latihan interaktif di platform"),
@@ -474,6 +474,12 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .kch{display:flex;gap:16px;align-items:flex-start;width:100%;text-align:left;border:0;cursor:pointer;background:var(--canvas);color:var(--foreground);border-radius:var(--radius-lg);padding:16px;font:500 16px/1.4 Inter,system-ui,sans-serif;transition:background var(--dur) var(--ease)}
 .kch:hover{background:var(--surface-hover)}
 .kch[aria-current="true"]{background:var(--primary-subtle)}
+.sec-dark{background:var(--hero);color:var(--on-dark)}
+.sec-dark .muted{color:var(--on-dark-muted)}
+.sec-dark .kev-video{box-shadow:none}
+.sec-dark .kch{background:var(--on-dark-fill);color:var(--on-dark)}
+.sec-dark .kch:hover{background:var(--on-dark-hover)}
+.sec-dark .kch[aria-current="true"]{background:var(--primary)}
 .kch-t{flex:none;min-width:48px;padding:2px 8px;border-radius:var(--radius-pill);background:var(--primary);color:var(--primary-foreground);font-size:12px;line-height:20px;font-weight:700;text-align:center}
 
 /* course + cta */
@@ -738,28 +744,6 @@ def landing(lang, variant="main"):
 <main>
 """)
 
-    # KEVIN (second screen)
-    kvideo = (f'<video class="kev-video" id="kev-video" controls playsinline preload="none" width="1280" height="720" '
-              f'poster="{prefix}assets/media/kevin_welcome.jpg" aria-label="{t("cap_kevin")}">'
-              f'<source src="{prefix}assets/media/kevin_welcome.mp4" type="video/mp4"></video>')
-    if variant == "test":
-        chapters = "".join(
-            f'<li><button type="button" class="kch" data-t="{sec}"><span class="kch-t tnum">0:{sec:02d}</span><span>{t(k)}</span></button></li>'
-            for sec, k in ((6, "kch1"), (15, "kch2"), (25, "kch3"), (33, "kch4")))
-        out.append(f"""<section id="kevin" class="sec"><div class="wrap stack" style="gap:32px">
-<h2 style="text-align:center">{t("k_h2")}</h2>
-<div class="kev2">{kvideo}
-<div class="kev2-side"><h3>{t("kch_h")}</h3><ol class="kchs">{chapters}</ol><p class="small muted">{t("kch_hint")}</p></div>
-</div>
-</div></section>
-""")
-    else:
-        out.append(f"""<section id="kevin" class="sec"><div class="wrap kev">
-<h2>{t("k_h2")}</h2>
-{kvideo}
-</div></section>
-""")
-
     # INCLUDED
     arrow = I["arrow"](20)
     out.append(f"""<section id="included" class="sec bg-canvas"><div class="wrap stack" style="gap:40px">
@@ -772,6 +756,28 @@ def landing(lang, variant="main"):
 <article class="card"><span class="ico">{I["doc"]()}</span><h3>{t("c5t")}</h3><p>{t("c5d")}</p><a class="link" href="#reports">{t("see_example")}{arrow}</a></article>
 <article class="card"><span class="ico">{I["trophy"]()}</span><h3>{t("c6t")}</h3><p>{t("c6d")}</p></article>
 </div>
+</div></section>
+""")
+
+    # KEVIN (third screen, dark)
+    kvideo = (f'<video class="kev-video" id="kev-video" controls playsinline preload="none" width="1280" height="720" '
+              f'poster="{prefix}assets/media/kevin_welcome.jpg" aria-label="{t("cap_kevin")}">'
+              f'<source src="{prefix}assets/media/kevin_welcome.mp4" type="video/mp4"></video>')
+    if variant == "test":
+        chapters = "".join(
+            f'<li><button type="button" class="kch" data-t="{sec}"><span class="kch-t tnum">0:{sec:02d}</span><span>{t(k)}</span></button></li>'
+            for sec, k in ((6, "kch1"), (15, "kch2"), (25, "kch3"), (33, "kch4")))
+        out.append(f"""<section id="kevin" class="sec sec-dark"><div class="wrap stack" style="gap:32px">
+<h2 style="text-align:center">{t("k_h2")}</h2>
+<div class="kev2">{kvideo}
+<div class="kev2-side"><h3>{t("kch_h")}</h3><ol class="kchs">{chapters}</ol><p class="small muted">{t("kch_hint")}</p></div>
+</div>
+</div></section>
+""")
+    else:
+        out.append(f"""<section id="kevin" class="sec sec-dark"><div class="wrap kev">
+<h2>{t("k_h2")}</h2>
+{kvideo}
 </div></section>
 """)
 

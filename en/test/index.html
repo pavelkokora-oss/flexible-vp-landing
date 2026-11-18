@@ -213,6 +213,12 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .kch{display:flex;gap:16px;align-items:flex-start;width:100%;text-align:left;border:0;cursor:pointer;background:var(--canvas);color:var(--foreground);border-radius:var(--radius-lg);padding:16px;font:500 16px/1.4 Inter,system-ui,sans-serif;transition:background var(--dur) var(--ease)}
 .kch:hover{background:var(--surface-hover)}
 .kch[aria-current="true"]{background:var(--primary-subtle)}
+.sec-dark{background:var(--hero);color:var(--on-dark)}
+.sec-dark .muted{color:var(--on-dark-muted)}
+.sec-dark .kev-video{box-shadow:none}
+.sec-dark .kch{background:var(--on-dark-fill);color:var(--on-dark)}
+.sec-dark .kch:hover{background:var(--on-dark-hover)}
+.sec-dark .kch[aria-current="true"]{background:var(--primary)}
 .kch-t{flex:none;min-width:48px;padding:2px 8px;border-radius:var(--radius-pill);background:var(--primary);color:var(--primary-foreground);font-size:12px;line-height:20px;font-weight:700;text-align:center}
 
 /* course + cta */
@@ -357,12 +363,6 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 </div>
 </div></header>
 <main>
-<section id="kevin" class="sec"><div class="wrap stack" style="gap:32px">
-<h2 style="text-align:center">Tutor explains the flexible format in 50 seconds</h2>
-<div class="kev2"><video class="kev-video" id="kev-video" controls playsinline preload="none" width="1280" height="720" poster="../../assets/media/kevin_welcome.jpg" aria-label="Kevin, Visual Programming teacher · 50 sec"><source src="../../assets/media/kevin_welcome.mp4" type="video/mp4"></video>
-<div class="kev2-side"><h3>In the video</h3><ol class="kchs"><li><button type="button" class="kch" data-t="6"><span class="kch-t tnum">0:06</span><span>From the first simple commands to their own projects</span></button></li><li><button type="button" class="kch" data-t="15"><span class="kch-t tnum">0:15</span><span>Every week: a short lesson — Kevin's video and interactive exercises on the platform</span></button></li><li><button type="button" class="kch" data-t="25"><span class="kch-t tnum">0:25</span><span>Your child learns any time, at their own pace</span></button></li><li><button type="button" class="kch" data-t="33"><span class="kch-t tnum">0:33</span><span>Every 3 weeks the group meets the tutor to work on a project together</span></button></li></ol><p class="small muted">Tap a point to jump to it in the video</p></div>
-</div>
-</div></section>
 <section id="included" class="sec bg-canvas"><div class="wrap stack" style="gap:40px">
 <div class="head"><h2>Everything your child needs to learn coding</h2><p class="lead">36 lessons + 12 live meetings over 36 weeks</p></div>
 <div class="grid3">
@@ -372,6 +372,12 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 <article class="card"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"></path></svg></span><h3>Chat support every day</h3><p>In Discord, 12:00–20:00 WIB. A moderator answers first, tutors help with harder questions.</p><a class="link" href="#more-discord">See an example<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></article>
 <article class="card"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h6"></path></svg></span><h3>Reports for parents</h3><p>A short WhatsApp message every week and a PDF report after every 3 weeks.</p><a class="link" href="#reports">See an example<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></article>
 <article class="card"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 4h8v5a4 4 0 0 1-8 0V4zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"></path></svg></span><h3>Certificate</h3><p>The same 36 topics as the regular course. A certificate is issued at the end.</p></article>
+</div>
+</div></section>
+<section id="kevin" class="sec sec-dark"><div class="wrap stack" style="gap:32px">
+<h2 style="text-align:center">Want to know more? Our lead tutor Kevin explains the basics in 50 seconds</h2>
+<div class="kev2"><video class="kev-video" id="kev-video" controls playsinline preload="none" width="1280" height="720" poster="../../assets/media/kevin_welcome.jpg" aria-label="Kevin, Visual Programming teacher · 50 sec"><source src="../../assets/media/kevin_welcome.mp4" type="video/mp4"></video>
+<div class="kev2-side"><h3>In the video</h3><ol class="kchs"><li><button type="button" class="kch" data-t="6"><span class="kch-t tnum">0:06</span><span>From the first simple commands to their own projects</span></button></li><li><button type="button" class="kch" data-t="15"><span class="kch-t tnum">0:15</span><span>Every week: a short lesson — Kevin's video and interactive exercises on the platform</span></button></li><li><button type="button" class="kch" data-t="25"><span class="kch-t tnum">0:25</span><span>Your child learns any time, at their own pace</span></button></li><li><button type="button" class="kch" data-t="33"><span class="kch-t tnum">0:33</span><span>Every 3 weeks the group meets the tutor to work on a project together</span></button></li></ol><p class="small muted">Tap a point to jump to it in the video</p></div>
 </div>
 </div></section>
 <section id="how" class="sec"><div class="wrap stack" style="gap:40px">
