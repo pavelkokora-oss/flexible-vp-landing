@@ -276,7 +276,7 @@ CSS = r"""
   --warning-subtle:#FDF3E2; --warning-text:#8A5D00;
   --lime:#D9FF00; --violet:#B299FF; --on-lime:#101828;
   --chip:#DCCEFE; --chip-foreground:#2E008A;
-  --hero:#101828; --hero-glow:rgba(88,0,229,.6);
+  --hero:#101828;
   --on-dark:#FFFFFF; --on-dark-muted:rgba(255,255,255,.78); --on-dark-fill:rgba(255,255,255,.08); --on-dark-hover:rgba(255,255,255,.16);
   --on-primary-muted:rgba(255,255,255,.86); --on-primary-fill:rgba(255,255,255,.14);
   --wa:#075E54; --wa-hover:#054A42;
@@ -322,7 +322,7 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .on-primary .link{color:var(--primary-foreground)}
 
 /* hero / dark header */
-.hero{background:radial-gradient(circle at 88% 0%,var(--hero-glow) 0%,rgba(88,0,229,0) 55%),var(--hero);color:var(--on-dark);padding:24px 0 96px}
+.hero{background:var(--hero);color:var(--on-dark);padding:24px 0 96px}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .nav img{height:32px;width:auto;flex:none}
 .nav-right{display:flex;align-items:center;gap:20px;min-width:0}
