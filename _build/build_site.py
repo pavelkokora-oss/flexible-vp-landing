@@ -41,7 +41,7 @@ T = {
     # included
     "inc_eyebrow": ("What's included", "Yang didapat"),
     "inc_h2": ("Everything your child needs to learn coding", "Semua yang dibutuhkan anak untuk belajar coding"),
-    "inc_total": ("<b>36 lessons + 12 live meetings</b> over 36 weeks", "<b>36 pelajaran + 12 pertemuan live</b> selama 36 minggu"),
+    "inc_total": ("36 lessons + 12 live meetings over 36 weeks", "36 pelajaran + 12 pertemuan live selama 36 minggu"),
     "c1t": ("36 lessons, one a week", "36 pelajaran, satu per minggu"),
     "c1d": ("Each lesson is 3–5 short parts of 15–20 minutes: a video, a quiz, a simulator and Scratch tasks.",
             "Setiap pelajaran terdiri dari 3–5 bagian singkat, masing-masing 15–20 menit: video, kuis, simulator, dan tugas Scratch."),
@@ -662,7 +662,7 @@ def landing(lang):
     # INCLUDED
     arrow = I["arrow"](20)
     out.append(f"""<section id="included" class="sec bg-canvas"><div class="wrap stack" style="gap:40px">
-<div class="head"><h2>{t("inc_h2")}</h2></div>
+<div class="head"><h2>{t("inc_h2")}</h2><p class="lead">{t("inc_total")}</p></div>
 <div class="grid3">
 <article class="card"><span class="ico">{I["play"]()}</span><h3>{t("c1t")}</h3><p>{t("c1d")}</p><a class="link" href="#more-lesson">{t("see_lesson")}{arrow}</a></article>
 <article class="card on-primary"><span class="ico">{I["screen"]()}</span><h3>{t("c2t")}</h3><p>{t("c2d")}</p><a class="link" href="{meetings}">{t("all12")}{arrow}</a></article>
@@ -671,7 +671,6 @@ def landing(lang):
 <article class="card"><span class="ico">{I["doc"]()}</span><h3>{t("c5t")}</h3><p>{t("c5d")}</p><a class="link" href="#reports">{t("see_example")}{arrow}</a></article>
 <article class="card"><span class="ico">{I["trophy"]()}</span><h3>{t("c6t")}</h3><p>{t("c6d")}</p></article>
 </div>
-<p class="total">{I["cal"](20)}<span>{t("inc_total")}</span></p>
 </div></section>
 """)
 
