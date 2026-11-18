@@ -670,7 +670,6 @@ def landing(lang):
 <div class="btns"><a class="btn btn-primary" href="#buy">{t("cta_buy")}</a><a class="btn btn-light" href="#included">{t("cta_more")}{I["arrow"](20)}</a></div>
 <ul class="chips">
 <li class="chip">{t("chip1")}</li>
-<li class="chip">{t("chip2")}</li>
 <li class="chip">{t("chip3")}</li>
 <li class="chip">{t("chip4")}</li>
 </ul>
