@@ -108,7 +108,7 @@ T = {
     "s2t": ("Live meeting", "Pertemuan live"),
     "s2d": ("90 minutes with the tutor in a group of 4: show projects, fix bugs, a group challenge.",
             "90 menit bersama tutor dalam grup 4 anak: tunjukkan proyek, perbaiki bug, tantangan grup."),
-    "s3e": ("Every week · every 3 weeks", "Setiap minggu · setiap 3 minggu"),
+    "s3e": ("Every week &amp; 3 weeks", "Setiap minggu &amp; 3 minggu"),
     "s3t": ("Report", "Laporan"),
     "s3d": ("Every week: what your child did and what's next. Every 3 weeks: a PDF report with the project and the tutor's comment.",
             "Setiap minggu: apa yang sudah dikerjakan anak dan apa selanjutnya. Setiap 3 minggu: laporan PDF berisi proyek dan komentar tutor."),
