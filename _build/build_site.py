@@ -326,7 +326,17 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .on-primary .link{color:var(--primary-foreground)}
 
 /* hero / dark header */
-.hero{background:var(--hero);color:var(--on-dark);padding:24px 0 96px}
+.hero{position:relative;overflow:hidden;background:var(--hero);color:var(--on-dark);padding:24px 0 96px}
+.hero>.wrap{position:relative;z-index:1}
+.ln{position:absolute;pointer-events:none;user-select:none;z-index:0}
+.ln-a{bottom:-96px;right:-140px;width:min(500px,38vw);transform:rotate(-6deg)}
+.ln-b{top:-150px;left:34%;width:min(560px,42vw);opacity:.8}
+.hero h1 .mark{display:inline-block;margin-top:8px}
+.hero-photo{position:relative;margin:0;justify-self:end;width:100%;max-width:440px}
+.hero-photo>img:first-child{width:100%;height:auto;border-radius:var(--radius-xl);box-shadow:var(--shadow-e3)}
+.hero-photo .sticker{top:auto;bottom:-28px;left:-28px;right:auto;transform:rotate(-10deg)}
+.hero-book{margin:0;justify-self:center;width:100%;max-width:380px}
+.hero-book img{width:100%;height:auto;filter:drop-shadow(0 24px 48px rgba(0,0,0,.45))}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .nav img{height:32px;width:auto;flex:none}
 .nav-right{display:flex;align-items:center;gap:20px;min-width:0}
@@ -524,7 +534,11 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
   .hero{padding-bottom:64px}
   .hero-grid{margin-top:40px}
   .nav-tag{display:none}
-  .hero .chips,.hero-grid .stat{display:none}
+  .nav img{height:28px}
+  .lang a,.lang span{min-width:40px;padding:0 10px}
+  .ln-a{width:240px;bottom:-60px;right:-90px}
+  .ln-b{width:300px;top:-110px;left:40%}
+  .hero .chips,.hero-visual{display:none}
   .lang a,.lang span{min-height:44px}
   .btns .btn{flex:1 1 100%}
   .grid3,.steps,.split,.callouts,.panel .grid3{grid-template-columns:minmax(0,1fr)}
@@ -584,7 +598,7 @@ JS = r"""
 
 
 # ------------------------------------------------------------------ helpers
-def head(lang, title, desc, ogdesc, prefix, alt_id, alt_en):
+def head(lang, title, desc, ogdesc, prefix, alt_id, alt_en, noindex=False):
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -594,7 +608,7 @@ def head(lang, title, desc, ogdesc, prefix, alt_id, alt_en):
 <meta name="description" content="{desc}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{ogdesc}">
-<meta name="theme-color" content="#101828">
+<meta name="theme-color" content="#101828">{'<meta name="robots" content="noindex">' if noindex else ""}
 <link rel="icon" href="{prefix}assets/logo-white.svg">
 <link rel="alternate" hreflang="id" href="{BASE}{alt_id}">
 <link rel="alternate" hreflang="en" href="{BASE}{alt_en}">
@@ -608,13 +622,16 @@ def head(lang, title, desc, ogdesc, prefix, alt_id, alt_en):
 """
 
 
-def nav(lang, t, prefix, id_href, en_href, home_href):
-    if lang == "id":
-        sw = (f'<span aria-current="true" lang="id">ID</span>'
-              f'<a href="{en_href}" hreflang="en" lang="en">EN</a>')
-    else:
-        sw = (f'<a href="{id_href}" hreflang="id" lang="id">ID</a>'
-              f'<span aria-current="true" lang="en">EN</span>')
+def nav(t, prefix, home_href, items):
+    """items: list of (label, href or None for current, hreflang or None)."""
+    sw = ""
+    for label, href, hl in items:
+        la = f' lang="{hl}"' if hl else ""
+        if href is None:
+            sw += f'<span aria-current="true"{la}>{label}</span>'
+        else:
+            hla = f' hreflang="{hl}"' if hl else ""
+            sw += f'<a href="{href}"{hla}{la}>{label}</a>'
     return (f'<nav class="nav">\n<a href="{home_href}" aria-label="Algonova"><img src="{prefix}assets/logo-white.svg" alt="Algonova" width="120" height="32"></a>\n'
             f'<div class="nav-right"><span class="nav-tag">{t("navtag")}</span>'
             f'<div class="lang" role="navigation" aria-label="{t("langlabel")}">{sw}</div></div>\n</nav>')
@@ -652,17 +669,35 @@ def footer(t, prefix):
 
 
 # ------------------------------------------------------------------ landing
-def landing(lang):
+def landing(lang, variant="main"):
     i = 0 if lang == "en" else 1
     t = lambda k: T[k][i]
-    prefix = "../" if lang == "en" else ""
-    meetings = "meetings/"
+    test = variant != "main"
+    prefix = ("../" if lang == "en" else "") + ("../" if test else "")
+    meetings = "../meetings/" if test else "meetings/"
     wa = f"https://wa.me/{WA_NUM}?text={WA_TEXT[lang]}"
-    out = [head(lang, t("title"), t("desc"), t("ogdesc"), prefix, "", "en/")]
+    out = [head(lang, t("title"), t("desc"), t("ogdesc"), prefix, "", "en/", noindex=test)]
+    root = prefix  # path to site root
+    if not test:
+        items = [("ID", None if lang == "id" else root, "id"), ("EN", None if lang == "en" else root + "en/", "en"),
+                 ("TEST", "test/", None), ("TEST 2", "test2/", None)]
+    else:
+        items = [("ID", root, "id"), ("EN", root + "en/", "en"),
+                 ("TEST", None if variant == "test" else "../test/", None),
+                 ("TEST 2", None if variant == "test2" else "../test2/", None)]
+    if variant == "test":
+        visual = (f'<figure class="hero-visual hero-photo"><img src="{prefix}assets/hero/kids_laptop.jpg" alt="" width="678" height="814">'
+                  f'<img class="sticker" src="{prefix}assets/sticker-scratch.svg" alt="" aria-hidden="true"></figure>')
+    elif variant == "test2":
+        visual = (f'<figure class="hero-visual hero-book"><img src="{prefix}assets/hero/book_visual_coding.webp" alt="Visual Coding · 8–11" width="720" height="1046"></figure>')
+    else:
+        visual = (f'<div class="stat hero-visual">\n<img class="sticker" src="{prefix}assets/sticker-scratch.svg" alt="" aria-hidden="true">\n'
+                  f'<span class="muted">{t("stat_label")}</span>\n<div class="num"><b>3×</b><span>{t("stat_word")}</span></div>\n'
+                  f'<span class="muted">{t("stat_sub")}</span>\n</div>')
 
     # HERO
-    out.append(f"""<header class="hero"><div class="wrap">
-{nav(lang, t, prefix, "../" if lang == "en" else "./", "en/" if lang == "id" else "./", "./")}
+    out.append(f"""<header class="hero"><img class="ln ln-a" src="{prefix}assets/lines/violet.svg" alt="" aria-hidden="true"><img class="ln ln-b" src="{prefix}assets/lines/white.svg" alt="" aria-hidden="true"><div class="wrap">
+{nav(t, prefix, "./", items)}
 <div class="hero-grid">
 <div class="hero-copy">
 <h1>{t("h1a")}<br><span class="mark">{t("h1b")}</span></h1>
@@ -674,12 +709,7 @@ def landing(lang):
 <li class="chip">{t("chip4")}</li>
 </ul>
 </div>
-<div class="stat">
-<img class="sticker" src="{prefix}assets/sticker-scratch.svg" alt="" aria-hidden="true">
-<span class="muted">{t("stat_label")}</span>
-<div class="num"><b>3×</b><span>{t("stat_word")}</span></div>
-<span class="muted">{t("stat_sub")}</span>
-</div>
+{visual}
 </div>
 </div></header>
 <main>
@@ -823,7 +853,7 @@ def meetings(lang):
     id_href = "../../meetings/" if lang == "en" else "./"
     en_href = "../en/meetings/" if lang == "id" else "./"
     out.append(f"""<header class="hero hero-sm"><div class="wrap">
-{nav(lang, t, prefix, id_href, en_href, landing_href)}
+{nav(t, prefix, landing_href, [("ID", None if lang == "id" else id_href, "id"), ("EN", None if lang == "en" else en_href, "en")])}
 <a class="back" href="{landing_href}">{I["back"](20)}{t("m_back")}</a>
 <div class="hero-copy">
 <span class="eyebrow">{t("m_eyebrow")}</span>
@@ -878,5 +908,8 @@ def write(rel, html):
 
 write("index.html", landing("id"))
 write("en/index.html", landing("en"))
+for v in ("test", "test2"):
+    write(f"{v}/index.html", landing("id", v))
+    write(f"en/{v}/index.html", landing("en", v))
 write("meetings/index.html", meetings("id"))
 write("en/meetings/index.html", meetings("en"))

@@ -71,7 +71,17 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .on-primary .link{color:var(--primary-foreground)}
 
 /* hero / dark header */
-.hero{background:var(--hero);color:var(--on-dark);padding:24px 0 96px}
+.hero{position:relative;overflow:hidden;background:var(--hero);color:var(--on-dark);padding:24px 0 96px}
+.hero>.wrap{position:relative;z-index:1}
+.ln{position:absolute;pointer-events:none;user-select:none;z-index:0}
+.ln-a{bottom:-96px;right:-140px;width:min(500px,38vw);transform:rotate(-6deg)}
+.ln-b{top:-150px;left:34%;width:min(560px,42vw);opacity:.8}
+.hero h1 .mark{display:inline-block;margin-top:8px}
+.hero-photo{position:relative;margin:0;justify-self:end;width:100%;max-width:440px}
+.hero-photo>img:first-child{width:100%;height:auto;border-radius:var(--radius-xl);box-shadow:var(--shadow-e3)}
+.hero-photo .sticker{top:auto;bottom:-28px;left:-28px;right:auto;transform:rotate(-10deg)}
+.hero-book{margin:0;justify-self:center;width:100%;max-width:380px}
+.hero-book img{width:100%;height:auto;filter:drop-shadow(0 24px 48px rgba(0,0,0,.45))}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .nav img{height:32px;width:auto;flex:none}
 .nav-right{display:flex;align-items:center;gap:20px;min-width:0}
@@ -269,7 +279,11 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
   .hero{padding-bottom:64px}
   .hero-grid{margin-top:40px}
   .nav-tag{display:none}
-  .hero .chips,.hero-grid .stat{display:none}
+  .nav img{height:28px}
+  .lang a,.lang span{min-width:40px;padding:0 10px}
+  .ln-a{width:240px;bottom:-60px;right:-90px}
+  .ln-b{width:300px;top:-110px;left:40%}
+  .hero .chips,.hero-visual{display:none}
   .lang a,.lang span{min-height:44px}
   .btns .btn{flex:1 1 100%}
   .grid3,.steps,.split,.callouts,.panel .grid3{grid-template-columns:minmax(0,1fr)}
@@ -310,10 +324,10 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 </style>
 </head>
 <body>
-<header class="hero"><div class="wrap">
+<header class="hero"><img class="ln ln-a" src="../assets/lines/violet.svg" alt="" aria-hidden="true"><img class="ln ln-b" src="../assets/lines/white.svg" alt="" aria-hidden="true"><div class="wrap">
 <nav class="nav">
 <a href="./" aria-label="Algonova"><img src="../assets/logo-white.svg" alt="Algonova" width="120" height="32"></a>
-<div class="nav-right"><span class="nav-tag">Visual Programming · Ages 8–11</span><div class="lang" role="navigation" aria-label="Language"><a href="../" hreflang="id" lang="id">ID</a><span aria-current="true" lang="en">EN</span></div></div>
+<div class="nav-right"><span class="nav-tag">Visual Programming · Ages 8–11</span><div class="lang" role="navigation" aria-label="Language"><a href="../" hreflang="id" lang="id">ID</a><span aria-current="true" lang="en">EN</span><a href="test/">TEST</a><a href="test2/">TEST 2</a></div></div>
 </nav>
 <div class="hero-grid">
 <div class="hero-copy">
@@ -326,7 +340,7 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 <li class="chip">Chat support every day</li>
 </ul>
 </div>
-<div class="stat">
+<div class="stat hero-visual">
 <img class="sticker" src="../assets/sticker-scratch.svg" alt="" aria-hidden="true">
 <span class="muted">Flexible format vs regular format</span>
 <div class="num"><b>3×</b><span>cheaper</span></div>
