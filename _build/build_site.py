@@ -27,8 +27,8 @@ T = {
     "h_eyebrow": ("Visual Programming · New flexible format", "Pemrograman Visual · Format fleksibel baru"),
     "h1a": ("The same coding course.", "Kursus coding yang sama."),
     "h1b": ("3× cheaper.", "3× lebih murah."),
-    "h_lead": ("Your child learns at home with <strong>short lessons</strong>: a video, a quiz, a simulator and Scratch tasks. Every 3 weeks the group meets a tutor at a <strong>live meeting</strong>. Same 36 topics, same certificate.",
-               "Anak belajar di rumah dengan <strong>pelajaran singkat</strong>: video, kuis, simulator, dan tugas Scratch. Setiap 3 minggu grup bertemu tutor di <strong>pertemuan live</strong>. 36 topik yang sama, sertifikat yang sama."),
+    "h_lead": ("Your child learns at home with <strong>weekly short lessons</strong> (video, quiz, simulator and tasks). Every 3 weeks, a <strong>live meeting</strong> with a tutor in a group of 4 kids. Same 36 topics, same certificate.",
+               "Anak belajar di rumah dengan <strong>pelajaran singkat setiap minggu</strong> (video, kuis, simulator, dan tugas). Setiap 3 minggu ada <strong>pertemuan live</strong> bersama tutor dalam grup berisi 4 anak. 36 topik yang sama, sertifikat yang sama."),
     "cta_buy": ("I want to buy", "Saya ingin membeli"),
     "cta_more": ("See what's included", "Lihat apa saja yang didapat"),
     "chip1": ("Short video lessons", "Video pelajaran singkat"),
@@ -505,6 +505,7 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
   .hero{padding-bottom:64px}
   .hero-grid{margin-top:40px}
   .nav-tag{display:none}
+  .hero .chips,.hero-grid .stat{display:none}
   .lang a,.lang span{min-height:44px}
   .btns .btn{flex:1 1 100%}
   .grid3,.steps,.split,.callouts,.panel .grid3{grid-template-columns:minmax(0,1fr)}
