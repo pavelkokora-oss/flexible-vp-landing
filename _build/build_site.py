@@ -131,6 +131,12 @@ T = {
              "<strong>Paling cocok untuk</strong> keluarga yang sibuk, anak yang suka belajar sesuai ritmenya sendiri, dan orang tua yang ingin melihat perkembangan setiap minggu."),
     # kevin
     "k_h2": ("Tutor explains the flexible format in 50 seconds", "Tutor menjelaskan format fleksibel dalam 50 detik"),
+    "kch_h": ("In the video", "Di dalam video"),
+    "kch1": ("From the first simple commands to their own projects", "Dari perintah sederhana pertama hingga proyek sendiri"),
+    "kch2": ("Every week: a short lesson — Kevin's video and interactive exercises on the platform", "Setiap minggu: pelajaran singkat — video dari Kevin dan latihan interaktif di platform"),
+    "kch3": ("Your child learns any time, at their own pace", "Anak belajar kapan saja, sesuai kecepatannya sendiri"),
+    "kch4": ("Every 3 weeks the group meets the tutor to work on a project together", "Setiap 3 minggu grup bertemu tutor untuk mengerjakan proyek bersama"),
+    "kch_hint": ("Tap a point to jump to it in the video", "Ketuk poin untuk langsung ke bagian itu di video"),
     # expandable details
     "more_h3": ("See how it works <span class=\"muted\" style=\"font-weight:400\">(click to expand)</span>", "Lihat cara kerjanya <span class=\"muted\" style=\"font-weight:400\">(klik untuk membuka)</span>"),
     "acc_lesson_t": ("Inside a lesson", "Isi satu pelajaran"),
@@ -461,6 +467,14 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .kev{display:flex;flex-direction:column;align-items:center;gap:32px;text-align:center}
 .kev h2{max-width:720px}
 .kev-video{width:100%;max-width:960px;border-radius:var(--radius-xl);box-shadow:var(--shadow-e3);background:var(--hero)}
+.kev2{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:32px;align-items:center}
+.kev2 .kev-video{max-width:none}
+.kev2-side{display:flex;flex-direction:column;gap:16px}
+.kchs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.kch{display:flex;gap:16px;align-items:flex-start;width:100%;text-align:left;border:0;cursor:pointer;background:var(--canvas);color:var(--foreground);border-radius:var(--radius-lg);padding:16px;font:500 16px/1.4 Inter,system-ui,sans-serif;transition:background var(--dur) var(--ease)}
+.kch:hover{background:var(--surface-hover)}
+.kch[aria-current="true"]{background:var(--primary-subtle)}
+.kch-t{flex:none;min-width:48px;padding:2px 8px;border-radius:var(--radius-pill);background:var(--primary);color:var(--primary-foreground);font-size:12px;line-height:20px;font-weight:700;text-align:center}
 
 /* course + cta */
 .box{border-radius:var(--radius-xl);padding:48px;display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between}
@@ -522,7 +536,7 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
   .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
   .parts{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hero-grid,.rep,.dc{grid-template-columns:minmax(0,1fr);gap:40px}
+  .hero-grid,.rep,.dc,.kev2{grid-template-columns:minmax(0,1fr);gap:40px}
   .hero-grid .stat{max-width:480px}
 }
 @media (max-width:767px){
@@ -579,6 +593,15 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 """
 
 JS = r"""
+(function(){
+  var v=document.getElementById('kev-video');var bs=[].slice.call(document.querySelectorAll('.kch'));
+  if(!v||!bs.length)return;
+  bs.forEach(function(b){b.addEventListener('click',function(){v.preload='auto';var t=+b.getAttribute('data-t');
+    var go=function(){v.currentTime=t;var p=v.play();if(p&&p.catch)p.catch(function(){});};
+    if(v.readyState>=1)go();else{v.addEventListener('loadedmetadata',go,{once:true});v.load();}});});
+  v.addEventListener('timeupdate',function(){var cur=null;bs.forEach(function(b){if(v.currentTime>=+b.getAttribute('data-t'))cur=b;});
+    bs.forEach(function(b){if(b===cur)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});});
+})();
 (function(){
   function openFrom(hash){if(!hash||hash.indexOf('#more-')!==0)return;var d=document.querySelector(hash);if(d&&d.tagName==='DETAILS')d.open=true;}
   [].slice.call(document.querySelectorAll('a[href^="#more-"]')).forEach(function(a){a.addEventListener('click',function(){openFrom(a.getAttribute('href'));});});
@@ -686,9 +709,8 @@ def landing(lang, variant="main"):
                  ("TEST", None if variant == "test" else "../test/", None),
                  ("TEST 2", None if variant == "test2" else "../test2/", None)]
     line_a = "" if variant == "test" else f'<img class="ln ln-a" src="{prefix}assets/lines/violet.svg" alt="" aria-hidden="true">'
-    if variant == "test":
-        visual = (f'<figure class="hero-visual hero-photo"><img src="{prefix}assets/hero/kids_laptop.jpg" alt="" width="538" height="611">'
-                  f'<img class="sticker" src="{prefix}assets/sticker-scratch.svg" alt="" aria-hidden="true"></figure>')
+    if False:
+        visual = ""
     elif variant == "test2":
         visual = (f'<figure class="hero-visual hero-book"><img src="{prefix}assets/hero/book_visual_coding.webp" alt="Visual Coding · 8–11" width="720" height="1046"></figure>')
     else:
@@ -716,10 +738,25 @@ def landing(lang, variant="main"):
 <main>
 """)
 
-    # KEVIN (second screen): one heading, big centered video
-    out.append(f"""<section id="kevin" class="sec"><div class="wrap kev">
+    # KEVIN (second screen)
+    kvideo = (f'<video class="kev-video" id="kev-video" controls playsinline preload="none" width="1280" height="720" '
+              f'poster="{prefix}assets/media/kevin_welcome.jpg" aria-label="{t("cap_kevin")}">'
+              f'<source src="{prefix}assets/media/kevin_welcome.mp4" type="video/mp4"></video>')
+    if variant == "test":
+        chapters = "".join(
+            f'<li><button type="button" class="kch" data-t="{sec}"><span class="kch-t tnum">0:{sec:02d}</span><span>{t(k)}</span></button></li>'
+            for sec, k in ((6, "kch1"), (15, "kch2"), (25, "kch3"), (33, "kch4")))
+        out.append(f"""<section id="kevin" class="sec"><div class="wrap stack" style="gap:32px">
+<h2 style="text-align:center">{t("k_h2")}</h2>
+<div class="kev2">{kvideo}
+<div class="kev2-side"><h3>{t("kch_h")}</h3><ol class="kchs">{chapters}</ol><p class="small muted">{t("kch_hint")}</p></div>
+</div>
+</div></section>
+""")
+    else:
+        out.append(f"""<section id="kevin" class="sec"><div class="wrap kev">
 <h2>{t("k_h2")}</h2>
-<video class="kev-video" controls playsinline preload="none" width="1280" height="720" poster="{prefix}assets/media/kevin_welcome.jpg" aria-label="{t("cap_kevin")}"><source src="{prefix}assets/media/kevin_welcome.mp4" type="video/mp4"></video>
+{kvideo}
 </div></section>
 """)
 

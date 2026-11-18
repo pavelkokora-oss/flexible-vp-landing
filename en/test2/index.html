@@ -206,6 +206,14 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 .kev{display:flex;flex-direction:column;align-items:center;gap:32px;text-align:center}
 .kev h2{max-width:720px}
 .kev-video{width:100%;max-width:960px;border-radius:var(--radius-xl);box-shadow:var(--shadow-e3);background:var(--hero)}
+.kev2{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:32px;align-items:center}
+.kev2 .kev-video{max-width:none}
+.kev2-side{display:flex;flex-direction:column;gap:16px}
+.kchs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.kch{display:flex;gap:16px;align-items:flex-start;width:100%;text-align:left;border:0;cursor:pointer;background:var(--canvas);color:var(--foreground);border-radius:var(--radius-lg);padding:16px;font:500 16px/1.4 Inter,system-ui,sans-serif;transition:background var(--dur) var(--ease)}
+.kch:hover{background:var(--surface-hover)}
+.kch[aria-current="true"]{background:var(--primary-subtle)}
+.kch-t{flex:none;min-width:48px;padding:2px 8px;border-radius:var(--radius-pill);background:var(--primary);color:var(--primary-foreground);font-size:12px;line-height:20px;font-weight:700;text-align:center}
 
 /* course + cta */
 .box{border-radius:var(--radius-xl);padding:48px;display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between}
@@ -267,7 +275,7 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
   .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
   .parts{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hero-grid,.rep,.dc{grid-template-columns:minmax(0,1fr);gap:40px}
+  .hero-grid,.rep,.dc,.kev2{grid-template-columns:minmax(0,1fr);gap:40px}
   .hero-grid .stat{max-width:480px}
 }
 @media (max-width:767px){
@@ -346,7 +354,7 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 <main>
 <section id="kevin" class="sec"><div class="wrap kev">
 <h2>Tutor explains the flexible format in 50 seconds</h2>
-<video class="kev-video" controls playsinline preload="none" width="1280" height="720" poster="../../assets/media/kevin_welcome.jpg" aria-label="Kevin, Visual Programming teacher · 50 sec"><source src="../../assets/media/kevin_welcome.mp4" type="video/mp4"></video>
+<video class="kev-video" id="kev-video" controls playsinline preload="none" width="1280" height="720" poster="../../assets/media/kevin_welcome.jpg" aria-label="Kevin, Visual Programming teacher · 50 sec"><source src="../../assets/media/kevin_welcome.mp4" type="video/mp4"></video>
 </div></section>
 <section id="included" class="sec bg-canvas"><div class="wrap stack" style="gap:40px">
 <div class="head"><h2>Everything your child needs to learn coding</h2><p class="lead">36 lessons + 12 live meetings over 36 weeks</p></div>
@@ -435,6 +443,15 @@ h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
 </main>
 <footer class="foot"><div class="wrap foot-grid"><div class="stack" style="gap:24px"><img src="../../assets/logo-white.svg" alt="Algonova" width="120" height="32"><div class="stack" style="gap:8px"><span class="foot-h">Contact</span><a href="https://wa.me/622150996971" target="_blank" rel="noopener">WhatsApp: +62 21 50996971</a><a href="mailto:info@algonova.id">Email: info@algonova.id</a></div></div><div class="stack" style="gap:24px"><div class="socials"><a href="https://instagram.com/algonova_indonesia" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/share/1DEM9hGyvC/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a><a href="https://youtube.com/@algonova_indonesia" target="_blank" rel="noopener" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a href="https://www.linkedin.com/company/algonova-global" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div><div class="stack" style="gap:8px"><span class="foot-h">PT Algonova Indonesia Cerdas · All rights reserved 2026</span><a class="main" href="https://algonova.com/ind/en">algonova.com</a></div></div></div></footer>
 <script>
+(function(){
+  var v=document.getElementById('kev-video');var bs=[].slice.call(document.querySelectorAll('.kch'));
+  if(!v||!bs.length)return;
+  bs.forEach(function(b){b.addEventListener('click',function(){v.preload='auto';var t=+b.getAttribute('data-t');
+    var go=function(){v.currentTime=t;var p=v.play();if(p&&p.catch)p.catch(function(){});};
+    if(v.readyState>=1)go();else{v.addEventListener('loadedmetadata',go,{once:true});v.load();}});});
+  v.addEventListener('timeupdate',function(){var cur=null;bs.forEach(function(b){if(v.currentTime>=+b.getAttribute('data-t'))cur=b;});
+    bs.forEach(function(b){if(b===cur)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});});
+})();
 (function(){
   function openFrom(hash){if(!hash||hash.indexOf('#more-')!==0)return;var d=document.querySelector(hash);if(d&&d.tagName==='DETAILS')d.open=true;}
   [].slice.call(document.querySelectorAll('a[href^="#more-"]')).forEach(function(a){a.addEventListener('click',function(){openFrom(a.getAttribute('href'));});});
